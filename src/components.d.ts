@@ -10,20 +10,13 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 
 export namespace Components {
-  interface DarkShadow {}
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first': string;
-    /**
-    * The last name
-    */
-    'last': string;
-    /**
-    * The middle name
-    */
-    'middle': string;
+  interface DarkShadow {
+    'isDarkOutside': boolean;
+    'showCloseIcon': boolean;
+    'showFooter': boolean;
+    'showHeader': boolean;
+    'title': string;
+    'width': string;
   }
 }
 
@@ -35,38 +28,23 @@ declare global {
     prototype: HTMLDarkShadowElement;
     new (): HTMLDarkShadowElement;
   };
-
-  interface HTMLMyComponentElement extends Components.MyComponent, HTMLStencilElement {}
-  var HTMLMyComponentElement: {
-    prototype: HTMLMyComponentElement;
-    new (): HTMLMyComponentElement;
-  };
   interface HTMLElementTagNameMap {
     'dark-shadow': HTMLDarkShadowElement;
-    'my-component': HTMLMyComponentElement;
   }
 }
 
 declare namespace LocalJSX {
-  interface DarkShadow {}
-  interface MyComponent {
-    /**
-    * The first name
-    */
-    'first'?: string;
-    /**
-    * The last name
-    */
-    'last'?: string;
-    /**
-    * The middle name
-    */
-    'middle'?: string;
+  interface DarkShadow {
+    'isDarkOutside'?: boolean;
+    'showCloseIcon'?: boolean;
+    'showFooter'?: boolean;
+    'showHeader'?: boolean;
+    'title'?: string;
+    'width'?: string;
   }
 
   interface IntrinsicElements {
     'dark-shadow': DarkShadow;
-    'my-component': MyComponent;
   }
 }
 
@@ -77,7 +55,6 @@ declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
       'dark-shadow': LocalJSX.DarkShadow & JSXBase.HTMLAttributes<HTMLDarkShadowElement>;
-      'my-component': LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
     }
   }
 }

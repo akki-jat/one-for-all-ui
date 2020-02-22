@@ -1,3 +1,54 @@
-:host {
-  display: block;
+.dark-shadow-container {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dark-shadow-container.dark-outside {
+  background-color: gray;
+}
+
+.dark-shadow {
+  background-color: white;
+  padding: 0.8rem;
+}
+
+.dark-shadow-header .title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.dark-shadow-header i {
+  margin-left: 1.5rem;
+  align-self: center;
+  cursor: pointer;
+}
+
+.dark-shadow-body {
+  margin-top: 1.5rem;
+}
+
+.dark-shadow-footer {
+  float: right;
+  margin-top: 1.5rem;
+}
+
+.dark-shadow-footer * {
+  margin-left: 0.5rem;
+}
+
+.one-for-all-icon.close-icon {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  width: 1.2rem;
+  height: 1.2rem;
+  float: right;
 }
