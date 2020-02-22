@@ -1,7 +1,12 @@
 {
   "name": "one-for-all",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "version": "0.0.1-beta",
+  "author": {
+    "name": "Akshay Jat (akki-jat)",
+    "email": "akshayjat06@gmail.com",
+    "url": "https://akki-jat.dev"
+  },
+  "description": "JavaScript Design Library",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
