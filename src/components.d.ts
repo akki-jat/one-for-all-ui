@@ -11,6 +11,7 @@ import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 
 export namespace Components {
   interface DarkShadow {
+    'animation': { open: any; close: any; };
     'isDarkOutside': boolean;
     'showCloseIcon': boolean;
     'showFooter': boolean;
@@ -35,6 +36,7 @@ declare global {
 
 declare namespace LocalJSX {
   interface DarkShadow {
+    'animation'?: { open: any; close: any; };
     'isDarkOutside'?: boolean;
     'showCloseIcon'?: boolean;
     'showFooter'?: boolean;
