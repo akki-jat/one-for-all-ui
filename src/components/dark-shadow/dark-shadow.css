@@ -13,12 +13,17 @@
 }
 
 .dark-shadow-container.dark-outside {
-  background-color: gray;
+  background-color: rgba(84, 84, 84, 0.6);
 }
 
 .dark-shadow {
   background-color: white;
   padding: 0.8rem;
+  display: none;
+}
+
+.dark-shadow.visible {
+  display: block;
 }
 
 .dark-shadow-header .title {

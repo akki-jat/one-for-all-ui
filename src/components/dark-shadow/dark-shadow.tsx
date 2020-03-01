@@ -1,5 +1,14 @@
-import { Component, h, Prop, Watch, Element } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Watch,
+  Element,
+  Method,
+  State
+} from "@stencil/core";
 import { revealY } from "../../animations";
+import { stopClickPropagation } from "../../utils/utils";
 
 @Component({
   tag: "dark-shadow",
@@ -15,6 +24,8 @@ export class DarkShadow {
   @Prop() showFooter = true;
   @Prop() title = "";
   @Prop() animation = { open: null, close: null };
+  @Prop() closeOnOutsideClick = false;
+  @State() visible = false;
 
   @Watch("animation")
   animationPropWatcher() {
@@ -29,7 +40,57 @@ export class DarkShadow {
     }
   }
 
-  public animate(el: HTMLElement, mode: "open" | "close") {
+  @Method()
+  async open() {
+    this.showDarkShadow();
+  }
+
+  @Method()
+  async close() {
+    this.hideDarkShadow();
+  }
+
+  showDarkShadow = () => {
+    this.visible = true;
+
+    if (this.animation) {
+      this.animation.open(this.el.shadowRoot.querySelector(".dark-shadow"));
+    }
+
+    if (this.closeOnOutsideClick) {
+      document.addEventListener("keydown", this.handleKeyDown);
+      this.el.addEventListener("click", this.hideDarkShadow);
+      this.el.shadowRoot
+        .querySelector(".dark-shadow")
+        .addEventListener("click", stopClickPropagation);
+    }
+  };
+
+  hideDarkShadow = () => {
+    if (this.animation) {
+      this.animation.close(
+        this.el.shadowRoot.querySelector(".dark-shadow")
+      ).onfinish = () => (this.visible = false);
+    } else {
+      this.visible = false;
+    }
+
+    if (this.closeOnOutsideClick) {
+      document.removeEventListener("keydown", this.handleKeyDown);
+      this.el.removeEventListener("click", this.hideDarkShadow);
+      this.el.shadowRoot
+        .querySelector(".dark-shadow")
+        .addEventListener("click", stopClickPropagation);
+    }
+  };
+
+  handleKeyDown = (ev: KeyboardEvent) => {
+    if (ev.key === "Escape") {
+      this.close();
+    }
+  };
+
+  animate(el: HTMLElement, mode: "open" | "close") {
     if (this.animation) {
       if (mode === "open") {
         this.animation.open(el);
@@ -41,7 +102,6 @@ export class DarkShadow {
 
   componentDidLoad() {
     this.animationPropWatcher();
-    this.animate(this.el.shadowRoot.querySelector(".dark-shadow"), "open");
   }
 
   render() {
@@ -51,14 +111,21 @@ export class DarkShadow {
           "dark-shadow-container": true,
           "dark-outside": this.isDarkOutside
         }}
+        style={{ display: this.visible ? "flex" : "none" }}
       >
-        <div class="dark-shadow" style={{ width: this.width, display: "none" }}>
+        <div
+          class={{ "dark-shadow": true, visible: this.visible }}
+          style={{ width: this.width }}
+        >
           {this.showHeader ? (
             <slot name="header">
               <div class="dark-shadow-header">
                 {this.showCloseIcon ? (
                   <slot name="header-close-icon">
-                    <i class="one-for-all-icon close-icon"></i>
+                    <i
+                      class="one-for-all-icon close-icon"
+                      onClick={this.close.bind(this)}
+                    ></i>
                   </slot>
                 ) : null}
                 <h2 class="title">{this.title || "Dark Shadow"}</h2>
@@ -79,8 +146,12 @@ export class DarkShadow {
           {this.showFooter ? (
             <slot name="footer">
               <div class="dark-shadow-footer">
-                <button type="button">Ok</button>
-                <button type="button">Cancel</button>
+                <button type="button" onClick={this.close.bind(this)}>
+                  Ok
+                </button>
+                <button type="button" onClick={this.close.bind(this)}>
+                  Cancel
+                </button>
               </div>
             </slot>
           ) : null}

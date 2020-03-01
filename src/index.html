@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
+    <title>Stencil Component Starter</title>
 
-  <script type="module" src="/build/one-for-all.esm.js"></script>
-  <script nomodule src="/build/one-for-all.js"></script>
+    <script type="module" src="/build/one-for-all.esm.js"></script>
+    <script nomodule src="/build/one-for-all.js"></script>
+  </head>
+  <body>
+    <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
+    <dark-shadow close-on-outside-click="true"></dark-shadow>
 
-</head>
-<body>
-
-  <dark-shadow></dark-shadow>
-
-</body>
+    <script>
+      function showDarkShadow() {
+        const darkShadowEl = document.querySelector("dark-shadow");
+        if (darkShadowEl) {
+          darkShadowEl.open();
+        }
+      }
+    </script>
+  </body>
 </html>
