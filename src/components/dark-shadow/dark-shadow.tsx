@@ -1,4 +1,5 @@
 import { Component, h, Prop, Watch, Element } from "@stencil/core";
+import { revealY } from "../../animations";
 
 @Component({
   tag: "dark-shadow",
@@ -19,21 +20,11 @@ export class DarkShadow {
   animationPropWatcher() {
     if (this.animation) {
       if (!this.animation.open) {
-        this.animation.open = (element: HTMLElement) => {
-          element.style.display = "block";
-          return element.animate(
-            [{ transform: "scaleY(0)" }, { transform: "scaleY(1)" }],
-            { duration: 250 }
-          );
-        };
+        this.animation.open = (element: HTMLElement) => revealY.show(element);
       }
 
       if (!this.animation.close) {
-        this.animation.close = (element: HTMLElement) =>
-          (element.animate(
-            [{ transform: "scaleY(1)" }, { transform: "scaleY(0)" }],
-            { duration: 250 }
-          ).onfinish = () => (element.style.display = "none"));
+        this.animation.close = (element: HTMLElement) => revealY.hide(element);
       }
     }
   }
@@ -61,7 +52,7 @@ export class DarkShadow {
           "dark-outside": this.isDarkOutside
         }}
       >
-        <div class="dark-shadow" style={{ width: this.width, display: 'none' }}>
+        <div class="dark-shadow" style={{ width: this.width, display: "none" }}>
           {this.showHeader ? (
             <slot name="header">
               <div class="dark-shadow-header">
