@@ -7,7 +7,7 @@ import {
   Method,
   State
 } from "@stencil/core";
-import { revealY } from "../../animations";
+import { revealY } from "../../utils/animations";
 import { stopClickPropagation } from "../../utils/utils";
 
 @Component({
