@@ -25,7 +25,17 @@ export class DarkShadow {
   @Prop() shadowTitle = "";
   @Prop() animation = { open: null, close: null };
   @Prop() closeOnOutsideClick = false;
-  @State() visible = false;
+  @Prop() visible = false;
+  @State() extend = false;
+
+  @Watch("visible")
+  visiblePropWatcher() {
+    if (this.visible) {
+      this.showDarkShadow();
+    } else {
+      this.hideDarkShadow();
+    }
+  }
 
   @Watch("animation")
   animationPropWatcher() {
@@ -51,7 +61,7 @@ export class DarkShadow {
   }
 
   showDarkShadow = () => {
-    this.visible = true;
+    this.extend = true;
 
     if (this.animation) {
       this.animation.open(this.el.shadowRoot.querySelector(".dark-shadow"));
@@ -70,9 +80,9 @@ export class DarkShadow {
     if (this.animation) {
       this.animation.close(
         this.el.shadowRoot.querySelector(".dark-shadow")
-      ).onfinish = () => (this.visible = false);
+      ).onfinish = () => (this.extend = false);
     } else {
-      this.visible = false;
+      this.extend = false;
     }
 
     if (this.closeOnOutsideClick) {
@@ -101,6 +111,7 @@ export class DarkShadow {
   }
 
   componentDidLoad() {
+    this.visiblePropWatcher();
     this.animationPropWatcher();
   }
 
@@ -111,10 +122,10 @@ export class DarkShadow {
           "dark-shadow-container": true,
           "dark-outside": this.isDarkOutside
         }}
-        style={{ display: this.visible ? "flex" : "none" }}
+        style={{ display: this.extend ? "flex" : "none" }}
       >
         <div
-          class={{ "dark-shadow": true, visible: this.visible }}
+          class={{ "dark-shadow": true, visible: this.extend }}
           style={{ width: this.width }}
         >
           {this.showHeader ? (

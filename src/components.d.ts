@@ -20,6 +20,7 @@ export namespace Components {
     'showCloseIcon': boolean;
     'showFooter': boolean;
     'showHeader': boolean;
+    'visible': boolean;
     'width': string;
   }
 }
@@ -46,6 +47,7 @@ declare namespace LocalJSX {
     'showCloseIcon'?: boolean;
     'showFooter'?: boolean;
     'showHeader'?: boolean;
+    'visible'?: boolean;
     'width'?: string;
   }
 
