@@ -1,12 +1,4 @@
-import {
-  Component,
-  h,
-  Prop,
-  Watch,
-  Element,
-  Method,
-  State
-} from "@stencil/core";
+import { Component, h, Prop, Watch, Element, Method } from "@stencil/core";
 import { revealY } from "../../utils/animations";
 import { stopClickPropagation } from "../../utils/utils";
 
@@ -25,8 +17,7 @@ export class DarkShadow {
   @Prop() shadowTitle = "";
   @Prop() animation = { open: null, close: null };
   @Prop() closeOnOutsideClick = false;
-  @Prop() visible = false;
-  @State() extend = false;
+  @Prop({ mutable: true, reflect: true }) visible = false;
 
   @Watch("visible")
   visiblePropWatcher() {
@@ -61,7 +52,7 @@ export class DarkShadow {
   }
 
   showDarkShadow = () => {
-    this.extend = true;
+    this.visible = true;
 
     if (this.animation) {
       this.animation.open(this.el.shadowRoot.querySelector(".dark-shadow"));
@@ -80,9 +71,9 @@ export class DarkShadow {
     if (this.animation) {
       this.animation.close(
         this.el.shadowRoot.querySelector(".dark-shadow")
-      ).onfinish = () => (this.extend = false);
+      ).onfinish = () => (this.visible = false);
     } else {
-      this.extend = false;
+      this.visible = false;
     }
 
     if (this.closeOnOutsideClick) {
@@ -122,10 +113,10 @@ export class DarkShadow {
           "dark-shadow-container": true,
           "dark-outside": this.isDarkOutside
         }}
-        style={{ display: this.extend ? "flex" : "none" }}
+        style={{ display: this.visible ? "flex" : "none" }}
       >
         <div
-          class={{ "dark-shadow": true, visible: this.extend }}
+          class={{ "dark-shadow": true, visible: this.visible }}
           style={{ width: this.width }}
         >
           {this.showHeader ? (
