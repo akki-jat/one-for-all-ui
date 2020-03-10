@@ -20,6 +20,16 @@
 | `width`               | `width`                  |             | `string`                     | `"auto"`                      |
 
 
+## Events
+
+| Event                | Description | Type               |
+| -------------------- | ----------- | ------------------ |
+| `afterHideCallback`  |             | `CustomEvent<any>` |
+| `afterShowCallback`  |             | `CustomEvent<any>` |
+| `beforeHideCallback` |             | `CustomEvent<any>` |
+| `beforeShowCallback` |             | `CustomEvent<any>` |
+
+
 ## Methods
 
 ### `close() => Promise<void>`

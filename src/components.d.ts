@@ -43,6 +43,10 @@ declare namespace LocalJSX {
     'animation'?: { open: any; close: any; };
     'closeOnOutsideClick'?: boolean;
     'isDarkOutside'?: boolean;
+    'onAfterHideCallback'?: (event: CustomEvent<any>) => void;
+    'onAfterShowCallback'?: (event: CustomEvent<any>) => void;
+    'onBeforeHideCallback'?: (event: CustomEvent<any>) => void;
+    'onBeforeShowCallback'?: (event: CustomEvent<any>) => void;
     'shadowTitle'?: string;
     'showCloseIcon'?: boolean;
     'showFooter'?: boolean;

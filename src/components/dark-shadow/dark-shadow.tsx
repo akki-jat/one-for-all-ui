@@ -1,4 +1,14 @@
-import { Component, h, Prop, Watch, Element, Method } from "@stencil/core";
+import {
+  Component,
+  h,
+  Prop,
+  Watch,
+  Element,
+  Method,
+  Event,
+  EventEmitter,
+  State
+} from "@stencil/core";
 import { revealY } from "../../utils/animations";
 import { stopClickPropagation } from "../../utils/utils";
 
@@ -18,6 +28,11 @@ export class DarkShadow {
   @Prop() animation = { open: null, close: null };
   @Prop() closeOnOutsideClick = false;
   @Prop({ mutable: true, reflect: true }) visible = false;
+  @State() extend = false;
+  @Event() beforeShowCallback: EventEmitter;
+  @Event() afterShowCallback: EventEmitter;
+  @Event() beforeHideCallback: EventEmitter;
+  @Event() afterHideCallback: EventEmitter;
 
   @Watch("visible")
   visiblePropWatcher() {
@@ -28,60 +43,58 @@ export class DarkShadow {
     }
   }
 
-  @Watch("animation")
-  animationPropWatcher() {
-    if (this.animation) {
-      if (!this.animation.open) {
-        this.animation.open = (element: HTMLElement) => revealY.show(element);
-      }
-
-      if (!this.animation.close) {
-        this.animation.close = (element: HTMLElement) => revealY.hide(element);
-      }
-    }
-  }
-
   @Method()
   async open() {
-    this.showDarkShadow();
+    this.visible = true;
   }
 
   @Method()
   async close() {
-    this.hideDarkShadow();
+    this.visible = false;
+  }
+
+  get darkShadowElement() {
+    return this.el.shadowRoot.querySelector(".dark-shadow");
   }
 
   showDarkShadow = () => {
-    this.visible = true;
+    const { returnValue } = this.beforeShowCallback.emit(this.el);
+    if (returnValue) {
+      this.extend = true;
 
-    if (this.animation) {
-      this.animation.open(this.el.shadowRoot.querySelector(".dark-shadow"));
-    }
+      if (this.animation) {
+        this.animation.open?.(this.darkShadowElement) ??
+          revealY.show(this.darkShadowElement);
+      }
 
-    if (this.closeOnOutsideClick) {
-      document.addEventListener("keydown", this.handleKeyDown);
-      this.el.addEventListener("click", this.hideDarkShadow);
-      this.el.shadowRoot
-        .querySelector(".dark-shadow")
-        .addEventListener("click", stopClickPropagation);
+      if (this.closeOnOutsideClick) {
+        document.addEventListener("keydown", this.handleKeyDown);
+        this.el.addEventListener("click", this.handleOutsideClick);
+        this.darkShadowElement?.addEventListener("click", stopClickPropagation);
+      }
+      this.afterShowCallback.emit(this.el);
     }
   };
 
   hideDarkShadow = () => {
-    if (this.animation) {
-      this.animation.close(
-        this.el.shadowRoot.querySelector(".dark-shadow")
-      ).onfinish = () => (this.visible = false);
-    } else {
-      this.visible = false;
-    }
+    const { returnValue } = this.beforeHideCallback.emit(this.el);
+    if (returnValue) {
+      if (this.animation) {
+        this.animation.close?.(this.darkShadowElement) ??
+          (revealY.hide(this.darkShadowElement).onfinish = () => {
+            this.extend = false;
+            this.afterHideCallback.emit(this.el);
+          });
+      } else {
+        this.extend = false;
+        this.afterHideCallback.emit(this.el);
+      }
 
-    if (this.closeOnOutsideClick) {
-      document.removeEventListener("keydown", this.handleKeyDown);
-      this.el.removeEventListener("click", this.hideDarkShadow);
-      this.el.shadowRoot
-        .querySelector(".dark-shadow")
-        .addEventListener("click", stopClickPropagation);
+      if (this.closeOnOutsideClick) {
+        document.removeEventListener("keydown", this.handleKeyDown);
+        this.el.removeEventListener("click", this.handleOutsideClick);
+        this.darkShadowElement.addEventListener("click", stopClickPropagation);
+      }
     }
   };
 
@@ -89,6 +102,10 @@ export class DarkShadow {
     if (ev.key === "Escape") {
       this.close();
     }
+  };
+
+  handleOutsideClick = (ev: MouseEvent) => {
+    this.close();
   };
 
   animate(el: HTMLElement, mode: "open" | "close") {
@@ -101,8 +118,7 @@ export class DarkShadow {
     }
   }
 
-  componentDidLoad() {
-    this.animationPropWatcher();
+  componentWillLoad() {
     this.visiblePropWatcher();
   }
 
@@ -113,10 +129,10 @@ export class DarkShadow {
           "dark-shadow-container": true,
           "dark-outside": this.isDarkOutside
         }}
-        style={{ display: this.visible ? "flex" : "none" }}
+        style={{ display: this.extend ? "flex" : "none" }}
       >
         <div
-          class={{ "dark-shadow": true, visible: this.visible }}
+          class={{ "dark-shadow": true, visible: this.extend }}
           style={{ width: this.width }}
         >
           {this.showHeader ? (

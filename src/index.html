@@ -13,14 +13,23 @@
   </head>
   <body>
     <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
-    <dark-shadow close-on-outside-click="true"></dark-shadow>
+    <dark-shadow close-on-outside-click="true" visible="true">This is Test</dark-shadow>
 
     <script>
+      const darkShadowEl = document.querySelector("dark-shadow");
+      darkShadowEl.addEventListener('beforeHideCallback', test);
+
       function showDarkShadow() {
         const darkShadowEl = document.querySelector("dark-shadow");
-        if (darkShadowEl) {
-          darkShadowEl.open();
-        }
+        darkShadowEl.visible = true;
+        // if (darkShadowEl) {
+        //   darkShadowEl.open();
+        // }
+      }
+
+      function test(ev) {
+        console.log('hi');
+        // ev.preventDefault(); 
       }
     </script>
   </body>
