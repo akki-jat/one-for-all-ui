@@ -111,8 +111,8 @@ export class DarkShadow {
   }
 
   componentDidLoad() {
-    this.visiblePropWatcher();
     this.animationPropWatcher();
+    this.visiblePropWatcher();
   }
 
   render() {
