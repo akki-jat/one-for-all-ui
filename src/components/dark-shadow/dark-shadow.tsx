@@ -22,7 +22,7 @@ export class DarkShadow {
   @Prop() showCloseIcon = true;
   @Prop() showHeader = true;
   @Prop() showFooter = true;
-  @Prop() title = "";
+  @Prop() shadowTitle = "";
   @Prop() animation = { open: null, close: null };
   @Prop() closeOnOutsideClick = false;
   @State() visible = false;
@@ -128,7 +128,7 @@ export class DarkShadow {
                     ></i>
                   </slot>
                 ) : null}
-                <h2 class="title">{this.title || "Dark Shadow"}</h2>
+                <h2 class="title">{this.shadowTitle || "Dark Shadow"}</h2>
               </div>
             </slot>
           ) : null}

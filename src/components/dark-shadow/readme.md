@@ -12,10 +12,10 @@
 | `animation`           | --                       |             | `{ open: any; close: any; }` | `{ open: null, close: null }` |
 | `closeOnOutsideClick` | `close-on-outside-click` |             | `boolean`                    | `false`                       |
 | `isDarkOutside`       | `is-dark-outside`        |             | `boolean`                    | `true`                        |
+| `shadowTitle`         | `shadow-title`           |             | `string`                     | `""`                          |
 | `showCloseIcon`       | `show-close-icon`        |             | `boolean`                    | `true`                        |
 | `showFooter`          | `show-footer`            |             | `boolean`                    | `true`                        |
 | `showHeader`          | `show-header`            |             | `boolean`                    | `true`                        |
-| `title`               | `title`                  |             | `string`                     | `""`                          |
 | `width`               | `width`                  |             | `string`                     | `"auto"`                      |
 
 

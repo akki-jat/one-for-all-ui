@@ -16,10 +16,10 @@ export namespace Components {
     'closeOnOutsideClick': boolean;
     'isDarkOutside': boolean;
     'open': () => Promise<void>;
+    'shadowTitle': string;
     'showCloseIcon': boolean;
     'showFooter': boolean;
     'showHeader': boolean;
-    'title': string;
     'width': string;
   }
 }
@@ -42,10 +42,10 @@ declare namespace LocalJSX {
     'animation'?: { open: any; close: any; };
     'closeOnOutsideClick'?: boolean;
     'isDarkOutside'?: boolean;
+    'shadowTitle'?: string;
     'showCloseIcon'?: boolean;
     'showFooter'?: boolean;
     'showHeader'?: boolean;
-    'title'?: string;
     'width'?: string;
   }
 
