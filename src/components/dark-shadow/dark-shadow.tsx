@@ -104,7 +104,7 @@ export class DarkShadow {
     }
   };
 
-  handleOutsideClick = (ev: MouseEvent) => {
+  handleOutsideClick = () => {
     this.close();
   };
 
