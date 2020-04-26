@@ -119,7 +119,7 @@ export class DarkShadow {
   }
 
   componentWillLoad() {
-    this.visiblePropWatcher();
+    this.visible && this.showDarkShadow();
   }
 
   render() {
