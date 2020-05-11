@@ -1,7 +1,7 @@
 ## Installation
 #### NPM
 ```bash
-npm install --save one-for-all-ui
+npm install one-for-all-ui --save
 ```
 
 #### JavaScript
