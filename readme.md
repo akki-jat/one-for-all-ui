@@ -12,7 +12,8 @@ npm install one-for-all-ui --save
 <br />
 
 ## Example
-#### JavaScript - [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zkjmi?file=/index.html:134-233)
+#### Dark Shadow (Modal)
+- ###### JavaScript - [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zkjmi?file=/index.html:134-233)
 
 <br />
 
