@@ -1,4 +1,22 @@
-## Getting Started
+## Installation
+#### NPM
+```bash
+npm install --save one-for-all-ui
+```
+
+#### JavaScript
+```javascript
+<script src="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.js"></script>
+```
+
+<br />
+
+## Example
+#### JavaScript - [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zkjmi?file=/index.html:134-233)
+
+<br />
+
+## For Development
 
 To start locally, run:
 
