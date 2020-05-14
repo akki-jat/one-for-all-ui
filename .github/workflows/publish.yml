@@ -5,17 +5,13 @@ on:
     types: [created]
 
 jobs:
-  fetch:
+  publish-npm:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
-  publish-npm:
-    needs: fetch
-    steps:
     - uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
+        node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
     - run: npm ci
     - run: npm test
@@ -24,12 +20,13 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-gpr:
-    need: fetch
+    runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
       with:
-        node-version: '14.x'
-        registry-url: 'https://npm.pkg.github.com'
+        node-version: '12.x'
+        registry-url: 'https://npm.pkg.github.com's
     - run: npm ci
     - run: npm test
     - run: npm publish
