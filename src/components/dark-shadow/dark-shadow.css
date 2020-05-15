@@ -12,6 +12,10 @@
   justify-content: center;
 }
 
+.dark-shadow-container.hidden {
+  display: none;
+}
+
 .dark-shadow-container.dark-outside {
   background-color: rgba(84, 84, 84, 0.6);
 }

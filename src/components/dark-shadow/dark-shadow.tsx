@@ -127,12 +127,12 @@ export class DarkShadow {
       <div
         class={{
           "dark-shadow-container": true,
-          "dark-outside": this.isDarkOutside
+          "dark-outside": this.isDarkOutside,
+          "hidden": !this.extend
         }}
-        style={{ display: this.extend ? "flex" : "none" }}
       >
         <div
-          class={{ "dark-shadow": true, visible: this.extend }}
+          class={{ "dark-shadow": true, "visible": this.extend }}
           style={{ width: this.width }}
         >
           {this.showHeader ? (
