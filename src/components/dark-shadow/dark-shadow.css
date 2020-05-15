@@ -30,6 +30,10 @@
   display: block;
 }
 
+.dark-shadow-header.has-title {
+  padding-bottom: 0.5rem;
+}
+
 .dark-shadow-header .title {
   margin-top: 0;
   margin-bottom: 0;
@@ -42,7 +46,7 @@
 }
 
 .dark-shadow-body {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
 }
 
 .dark-shadow-footer {

@@ -7,7 +7,7 @@ import {
   Method,
   Event,
   EventEmitter,
-  State
+  State,
 } from "@stencil/core";
 import { revealY } from "../../utils/animations";
 import { stopClickPropagation } from "../../utils/utils";
@@ -15,15 +15,13 @@ import { stopClickPropagation } from "../../utils/utils";
 @Component({
   tag: "dark-shadow",
   styleUrl: "dark-shadow.css",
-  shadow: true
+  shadow: true,
 })
 export class DarkShadow {
   @Element() el: HTMLElement;
   @Prop() isDarkOutside = true;
   @Prop() width = "auto";
   @Prop() showCloseIcon = true;
-  @Prop() showHeader = true;
-  @Prop() showFooter = true;
   @Prop() shadowTitle = "";
   @Prop() animation = { open: null, close: null };
   @Prop() closeOnOutsideClick = false;
@@ -93,7 +91,7 @@ export class DarkShadow {
       if (this.closeOnOutsideClick) {
         document.removeEventListener("keydown", this.handleKeyDown);
         this.el.removeEventListener("click", this.handleOutsideClick);
-        this.darkShadowElement.addEventListener("click", stopClickPropagation);
+        // this.darkShadowElement.addEventListener("click", stopClickPropagation);
       }
     }
   };
@@ -128,51 +126,41 @@ export class DarkShadow {
         class={{
           "dark-shadow-container": true,
           "dark-outside": this.isDarkOutside,
-          "hidden": !this.extend
+          hidden: !this.extend,
         }}
       >
         <div
-          class={{ "dark-shadow": true, "visible": this.extend }}
+          class={{ "dark-shadow": true, visible: this.extend }}
           style={{ width: this.width }}
         >
-          {this.showHeader ? (
-            <slot name="header">
-              <div class="dark-shadow-header">
-                {this.showCloseIcon ? (
-                  <slot name="header-close-icon">
-                    <i
-                      class="one-for-all-icon close-icon"
-                      onClick={this.close.bind(this)}
-                    ></i>
-                  </slot>
-                ) : null}
-                <h2 class="title">{this.shadowTitle || "Dark Shadow"}</h2>
-              </div>
-            </slot>
-          ) : null}
-          <slot name="body">
-            <div class="dark-shadow-body">
-              <slot>
-                This Quirk allows the user to host a shadow-like monster inside
-                their body. <br /> Dark Shadow has been known to be able to
-                speak and think as it's own being. Dark Shadow can be strengthen
-                by negative emotions and the darker a place is, but it also gets
-                harder to control. <br /> Users: Fumikage Tokoyami
-              </slot>
+          <slot name="header">
+            <div
+              class={{
+                "dark-shadow-header": true,
+                "has-title": this.showCloseIcon || this.shadowTitle?.length > 0,
+              }}
+            >
+              {this.showCloseIcon ? (
+                <slot name="header-close-icon">
+                  <i
+                    class="one-for-all-icon close-icon"
+                    onClick={this.close.bind(this)}
+                  ></i>
+                </slot>
+              ) : null}
+              <h2 class="title">{this.shadowTitle}</h2>
             </div>
           </slot>
-          {this.showFooter ? (
-            <slot name="footer">
-              <div class="dark-shadow-footer">
-                <button type="button" onClick={this.close.bind(this)}>
-                  Ok
-                </button>
-                <button type="button" onClick={this.close.bind(this)}>
-                  Cancel
-                </button>
-              </div>
-            </slot>
-          ) : null}
+          <slot name="body">
+            <div class="dark-shadow-body">
+              <slot></slot>
+            </div>
+          </slot>
+          <slot name="footer">
+            <div class="dark-shadow-footer">
+              <slot name="footer-content"></slot>
+            </div>
+          </slot>
         </div>
       </div>
     );
