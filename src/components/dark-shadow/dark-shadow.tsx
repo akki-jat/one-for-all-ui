@@ -68,7 +68,7 @@ export class DarkShadow {
       if (this.closeOnOutsideClick) {
         document.addEventListener("keydown", this.handleKeyDown);
         this.el.addEventListener("click", this.handleOutsideClick);
-        this.darkShadowElement?.addEventListener("click", stopClickPropagation);
+        this.darkShadowElement.addEventListener("click", stopClickPropagation);
       }
       this.afterShowCallback.emit(this.el);
     }
@@ -91,7 +91,7 @@ export class DarkShadow {
       if (this.closeOnOutsideClick) {
         document.removeEventListener("keydown", this.handleKeyDown);
         this.el.removeEventListener("click", this.handleOutsideClick);
-        // this.darkShadowElement.addEventListener("click", stopClickPropagation);
+        this.darkShadowElement.addEventListener("click", stopClickPropagation);
       }
     }
   };
@@ -116,7 +116,7 @@ export class DarkShadow {
     }
   }
 
-  componentWillLoad() {
+  componentDidRender() {
     this.visible && this.showDarkShadow();
   }
 
