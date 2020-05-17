@@ -17,9 +17,13 @@ export namespace Components {
         "open": () => Promise<void>;
         "shadowTitle": string;
         "showCloseIcon": boolean;
-        "showFooter": boolean;
-        "showHeader": boolean;
         "visible": boolean;
+        "width": string;
+    }
+    interface SpecialCard {
+        "borderRadius": string;
+        "cardTitle": string;
+        "showHeader": boolean;
         "width": string;
     }
 }
@@ -30,8 +34,15 @@ declare global {
         prototype: HTMLDarkShadowElement;
         new (): HTMLDarkShadowElement;
     };
+    interface HTMLSpecialCardElement extends Components.SpecialCard, HTMLStencilElement {
+    }
+    var HTMLSpecialCardElement: {
+        prototype: HTMLSpecialCardElement;
+        new (): HTMLSpecialCardElement;
+    };
     interface HTMLElementTagNameMap {
         "dark-shadow": HTMLDarkShadowElement;
+        "special-card": HTMLSpecialCardElement;
     }
 }
 declare namespace LocalJSX {
@@ -48,13 +59,18 @@ declare namespace LocalJSX {
         "onBeforeShowCallback"?: (event: CustomEvent<any>) => void;
         "shadowTitle"?: string;
         "showCloseIcon"?: boolean;
-        "showFooter"?: boolean;
-        "showHeader"?: boolean;
         "visible"?: boolean;
+        "width"?: string;
+    }
+    interface SpecialCard {
+        "borderRadius"?: string;
+        "cardTitle"?: string;
+        "showHeader"?: boolean;
         "width"?: string;
     }
     interface IntrinsicElements {
         "dark-shadow": DarkShadow;
+        "special-card": SpecialCard;
     }
 }
 export { LocalJSX as JSX };
@@ -62,6 +78,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "dark-shadow": LocalJSX.DarkShadow & JSXBase.HTMLAttributes<HTMLDarkShadowElement>;
+            "special-card": LocalJSX.SpecialCard & JSXBase.HTMLAttributes<HTMLSpecialCardElement>;
         }
     }
 }

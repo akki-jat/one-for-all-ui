@@ -1,0 +1,33 @@
+.special-card-container {
+  overflow: hidden;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.22);
+  transition: box-shadow 0.2s linear, opacity 0.2s linear;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.special-card-container:hover {
+  box-shadow: 0 0 4rem rgba(0, 0, 0, 0.22);
+}
+
+.special-card-header {
+  display: flex;
+  align-items: center;
+}
+
+.special-card-header.has-title {
+  padding: 1rem 1rem 0.375rem 1rem;
+}
+
+.special-card-header .title {
+  margin: 0;
+}
+
+.special-card-body {
+  padding: 1rem;
+}
+
+.special-card-footer {
+  padding: 0.5rem;
+  display: flex;
+}

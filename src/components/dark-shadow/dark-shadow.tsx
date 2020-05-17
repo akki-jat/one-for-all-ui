@@ -32,6 +32,10 @@ export class DarkShadow {
   @Event() beforeHideCallback: EventEmitter;
   @Event() afterHideCallback: EventEmitter;
 
+  get darkShadowElement() {
+    return this.el.shadowRoot.querySelector(".dark-shadow");
+  }
+
   @Watch("visible")
   visiblePropWatcher() {
     if (this.visible) {
@@ -49,10 +53,6 @@ export class DarkShadow {
   @Method()
   async close() {
     this.visible = false;
-  }
-
-  get darkShadowElement() {
-    return this.el.shadowRoot.querySelector(".dark-shadow");
   }
 
   showDarkShadow = () => {

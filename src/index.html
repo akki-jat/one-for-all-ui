@@ -12,25 +12,56 @@
     <script nomodule src="/build/one-for-all.js"></script>
   </head>
   <body>
-    <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
-    <dark-shadow close-on-outside-click="true" visible="true">This is Test</dark-shadow>
+    <!-- <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
+    <dark-shadow
+      close-on-outside-click="true"
+      show-close-icon="false"
+      visible="true"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+      <div slot="footer-content"><button>Test</button></div>
+    </dark-shadow> -->
+
+    <special-card
+      id="card"
+      width="275px"
+      card-title="This is Title"
+      border-radius="14px"
+    >
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+      veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+      commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+      est laborum.
+      <div slot="footer-content">
+        <button>Learn More</button><button>Learn Less</button>
+      </div>
+    </special-card>
 
     <script>
-      const darkShadowEl = document.querySelector("dark-shadow");
-      darkShadowEl.addEventListener('beforeHideCallback', test);
+      // const darkShadowEl = document.querySelector("dark-shadow");
+      // darkShadowEl.addEventListener("beforeHideCallback", test);
 
-      function showDarkShadow() {
-        const darkShadowEl = document.querySelector("dark-shadow");
-        darkShadowEl.visible = true;
-        // if (darkShadowEl) {
-        //   darkShadowEl.open();
-        // }
-      }
+      // function showDarkShadow() {
+      //   const darkShadowEl = document.querySelector("dark-shadow");
+      //   darkShadowEl.visible = true;
+      //   // if (darkShadowEl) {
+      //   //   darkShadowEl.open();
+      //   // }
+      // }
 
-      function test(ev) {
-        console.log('hi');
-        // ev.preventDefault(); 
-      }
+      // function test(ev) {
+      //   console.log("hi");
+      //   // ev.preventDefault();
+      // }
     </script>
   </body>
 </html>
