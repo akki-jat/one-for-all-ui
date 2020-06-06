@@ -35,7 +35,7 @@ export class SpecialCard {
           </slot>
           <slot name="body">
             <div class="special-card-body">
-              <slot>Card Body</slot>
+              <slot></slot>
             </div>
           </slot>
           <slot name="footer">
