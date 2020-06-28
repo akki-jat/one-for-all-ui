@@ -7,10 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface DarkShadow {
-        "animation": {
-            open: any;
-            close: any;
-        };
+        "animation": { open: any; close: any; };
         "close": () => Promise<void>;
         "closeOnOutsideClick": boolean;
         "isDarkOutside": boolean;
@@ -47,10 +44,7 @@ declare global {
 }
 declare namespace LocalJSX {
     interface DarkShadow {
-        "animation"?: {
-            open: any;
-            close: any;
-        };
+        "animation"?: { open: any; close: any; };
         "closeOnOutsideClick"?: boolean;
         "isDarkOutside"?: boolean;
         "onAfterHideCallback"?: (event: CustomEvent<any>) => void;

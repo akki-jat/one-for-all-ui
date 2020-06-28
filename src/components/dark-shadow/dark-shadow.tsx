@@ -15,7 +15,6 @@ import { stopClickPropagation } from "../../utils/utils";
 @Component({
   tag: "dark-shadow",
   styleUrl: "dark-shadow.css",
-  shadow: true,
 })
 export class DarkShadow {
   @Element() el: HTMLElement;
@@ -33,7 +32,7 @@ export class DarkShadow {
   @Event() afterHideCallback: EventEmitter;
 
   get darkShadowElement() {
-    return this.el.shadowRoot.querySelector(".dark-shadow");
+    return this.el.querySelector(".dark-shadow");
   }
 
   @Watch("visible")
@@ -125,30 +124,31 @@ export class DarkShadow {
       <div
         class={{
           "dark-shadow-container": true,
-          "dark-outside": this.isDarkOutside,
-          hidden: !this.extend,
+          "dark-shadow-container--dark-outside": this.isDarkOutside,
+          "dark-shadow-container--hidden": !this.extend,
         }}
       >
         <div
-          class={{ "dark-shadow": true, visible: this.extend }}
+          class={{ "dark-shadow": true, "dark-shadow--visible": this.extend }}
           style={{ width: this.width }}
         >
           <slot name="header">
             <div
               class={{
                 "dark-shadow-header": true,
-                "has-title": this.showCloseIcon || this.shadowTitle?.length > 0,
+                "dark-shadow-header--has-title":
+                  this.showCloseIcon || this.shadowTitle?.length > 0,
               }}
             >
               {this.showCloseIcon ? (
                 <slot name="header-close-icon">
                   <i
-                    class="one-for-all-icon close-icon"
+                    class="dark-shadow-header__close-icon"
                     onClick={this.close.bind(this)}
                   ></i>
                 </slot>
               ) : null}
-              <h2 class="title">{this.shadowTitle}</h2>
+              <h2 class="dark-shadow-header__title">{this.shadowTitle}</h2>
             </div>
           </slot>
           <slot name="body">

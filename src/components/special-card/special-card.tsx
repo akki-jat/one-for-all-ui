@@ -3,7 +3,6 @@ import { Component, h, Prop } from "@stencil/core";
 @Component({
   tag: "special-card",
   styleUrl: "special-card.css",
-  shadow: true,
 })
 export class SpecialCard {
   @Prop() width = "auto";
@@ -25,11 +24,11 @@ export class SpecialCard {
             <div
               class={{
                 "special-card-header": true,
-                "has-title": this.cardTitle?.length > 0,
+                "special-card-header--has-title": this.cardTitle?.length > 0,
               }}
             >
               <slot name="header-content">
-                <h2 class="title">{this.cardTitle}</h2>
+                <h2 class="special-card-header__title">{this.cardTitle}</h2>
               </slot>
             </div>
           </slot>

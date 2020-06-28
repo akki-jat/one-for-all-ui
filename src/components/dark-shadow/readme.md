@@ -14,8 +14,6 @@
 | `isDarkOutside`       | `is-dark-outside`        |             | `boolean`                    | `true`                        |
 | `shadowTitle`         | `shadow-title`           |             | `string`                     | `""`                          |
 | `showCloseIcon`       | `show-close-icon`        |             | `boolean`                    | `true`                        |
-| `showFooter`          | `show-footer`            |             | `boolean`                    | `true`                        |
-| `showHeader`          | `show-header`            |             | `boolean`                    | `true`                        |
 | `visible`             | `visible`                |             | `boolean`                    | `false`                       |
 | `width`               | `width`                  |             | `string`                     | `"auto"`                      |
 
