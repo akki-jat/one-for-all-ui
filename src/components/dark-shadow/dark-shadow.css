@@ -16,21 +16,11 @@
   display: none;
 }
 
-/* .dark-shadow-container--dark-outside {
-  background-color: var(--color-primary);
-} */
-
-.dark-shadow-container--dark-outside::after {
-  content: '';
-	width: 100%;
-	height: 100%;
-	opacity: 0.5;
-	position: fixed;
-	background-color: var(--color-primary);
+.dark-shadow-container--dark-outside {
+  background-color: rgba(0, 0, 0, 0.5)
 }
 
 .dark-shadow {
-  z-index: 1;
   display: none;
   padding: 0.8rem;
   color: var(--color-font);
