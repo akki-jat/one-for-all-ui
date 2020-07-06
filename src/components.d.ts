@@ -20,6 +20,8 @@ export namespace Components {
     interface SpecialCard {
         "borderRadius": string;
         "cardTitle": string;
+        "elevation": number;
+        "hoverElevation": number;
         "showHeader": boolean;
         "width": string;
     }
@@ -59,6 +61,8 @@ declare namespace LocalJSX {
     interface SpecialCard {
         "borderRadius"?: string;
         "cardTitle"?: string;
+        "elevation"?: number;
+        "hoverElevation"?: number;
         "showHeader"?: boolean;
         "width"?: string;
     }

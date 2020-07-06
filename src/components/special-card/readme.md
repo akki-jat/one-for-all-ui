@@ -7,12 +7,14 @@
 
 ## Properties
 
-| Property       | Attribute       | Description | Type      | Default     |
-| -------------- | --------------- | ----------- | --------- | ----------- |
-| `borderRadius` | `border-radius` |             | `string`  | `"0.25rem"` |
-| `cardTitle`    | `card-title`    |             | `string`  | `""`        |
-| `showHeader`   | `show-header`   |             | `boolean` | `false`     |
-| `width`        | `width`         |             | `string`  | `"auto"`    |
+| Property         | Attribute         | Description | Type      | Default     |
+| ---------------- | ----------------- | ----------- | --------- | ----------- |
+| `borderRadius`   | `border-radius`   |             | `string`  | `"0.25rem"` |
+| `cardTitle`      | `card-title`      |             | `string`  | `""`        |
+| `elevation`      | `elevation`       |             | `number`  | `2`         |
+| `hoverElevation` | `hover-elevation` |             | `number`  | `0`         |
+| `showHeader`     | `show-header`     |             | `boolean` | `false`     |
+| `width`          | `width`           |             | `string`  | `"auto"`    |
 
 
 ----------------------------------------------
