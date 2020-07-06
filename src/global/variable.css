@@ -3,3 +3,7 @@
     --color-secondary: #F95454;
     --color-font: #ffffff;
 }
+
+body {
+    background-color: var(--color-primary);
+}
