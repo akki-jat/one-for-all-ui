@@ -90,7 +90,7 @@ export class DarkShadow {
       if (this.closeOnOutsideClick) {
         document.removeEventListener("keydown", this.handleKeyDown);
         this.el.removeEventListener("click", this.handleOutsideClick);
-        this.darkShadowElement.addEventListener("click", stopClickPropagation);
+        this.darkShadowElement.removeEventListener("click", stopClickPropagation);
       }
     }
   };
