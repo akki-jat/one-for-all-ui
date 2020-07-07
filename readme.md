@@ -13,7 +13,10 @@ npm install one-for-all-ui --save
 
 ## Example
 #### Dark Shadow (Modal)
-- JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zkjmi?file=/index.html:134-233)
+- JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-darkshadow-modal-zkjmi)
+
+#### Special Card (Card)
+- JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-specialcard-card-insx1)
 
 <br />
 
