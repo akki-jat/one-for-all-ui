@@ -41,9 +41,15 @@
 }
 
 .dark-shadow-header i {
+  float: right;
   cursor: pointer;
-  align-self: center;
-  margin-left: 1.5rem;
+}
+
+.dark-shadow-header__clear-svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  vertical-align: middle;
+  fill: var(--color-font);
 }
 
 .dark-shadow-body {
@@ -57,11 +63,4 @@
 
 .dark-shadow-footer * {
   margin-left: 0.5rem;
-}
-
-.dark-shadow-header__clear-svg {
-  float: right;
-  width: 1.2rem;
-  height: 1.2rem;
-  fill: var(--color-font)
 }

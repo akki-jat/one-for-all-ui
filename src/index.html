@@ -12,7 +12,7 @@
     <script nomodule src="/build/one-for-all.js"></script>
     <!-- <link rel="stylesheet" href="/build/one-for-all.css"> -->
     <style>
-      :root {
+      /* :root {
           --color-primary: #1d1e21;
           --color-secondary: #F95454;
           --color-font: #ffffff;
@@ -20,17 +20,18 @@
 
       body {
           background-color: var(--color-primary);
-      }
+      } */
     </style>
   </head>
   <body>
     <div>
-      <!-- <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
+      <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
       <dark-shadow
         shadow-title="Test"
         close-on-outside-click="true"
         show-close-icon="true"
         visible="true"
+        width="30%"
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -40,7 +41,7 @@
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
         est laborum.
         <div slot="footer-content"><button>Test</button></div>
-      </dark-shadow> -->
+      </dark-shadow>
 
       <!-- <special-card
         id="card"
@@ -67,13 +68,13 @@
       // const darkShadowEl = document.querySelector("dark-shadow");
       // darkShadowEl.addEventListener("beforeHideCallback", test);
 
-      // function showDarkShadow() {
-      //   const darkShadowEl = document.querySelector("dark-shadow");
-      //   darkShadowEl.visible = true;
-      //   // if (darkShadowEl) {
-      //   //   darkShadowEl.open();
-      //   // }
-      // }
+      function showDarkShadow() {
+        const darkShadowEl = document.querySelector("dark-shadow");
+        darkShadowEl.visible = true;
+        // if (darkShadowEl) {
+        //   darkShadowEl.open();
+        // }
+      }
 
       // function test(ev) {
       //   console.log("hi");
