@@ -22,7 +22,7 @@
 
 .special-card-body {
   padding: 1rem;
-  color: hsla(0,0%,100%,.7);
+  filter: brightness(0.7);
 }
 
 .special-card-footer {
