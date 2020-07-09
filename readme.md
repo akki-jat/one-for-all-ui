@@ -9,6 +9,16 @@ npm install one-for-all-ui --save
 <script src="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.js"></script>
 ```
 
+#### Themeing
+- Below css variables are provided for theming of all components
+```css
+--color-primary: your_color;
+--color-secondary: your_color;
+--color-font: your_color;
+```
+
+Note: Replace your_color with your choice of color.
+
 <br />
 
 ## Example
