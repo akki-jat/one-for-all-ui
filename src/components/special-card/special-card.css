@@ -31,7 +31,7 @@
 
 .special-card-body {
   padding: 1rem;
-  filter: brightness(0.7);
+  filter: contrast(0.4);
 }
 
 .special-card-footer {
