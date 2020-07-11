@@ -20,6 +20,15 @@
   margin: 0;
 }
 
+.special-card-header__subtitle {
+    margin: 0;
+    filter: contrast(0.4);
+}
+
+.special-card-header--has-subtitle {
+    margin-top: 0.2em;
+}
+
 .special-card-body {
   padding: 1rem;
   filter: brightness(0.7);

@@ -7,7 +7,9 @@ import { Component, h, Prop, State, Element } from "@stencil/core";
 export class SpecialCard {
   @Element() el: Element;
   @Prop() width = "auto";
+  @Prop() height = "auto";
   @Prop() cardTitle = "";
+  @Prop() cardSubtitle = "";
   @Prop() elevation = 2;
   @Prop() hoverElevation = 0;
   @Prop() showHeader = false;
@@ -51,6 +53,7 @@ export class SpecialCard {
         class={`special-card-container elevation-${this.isHover && this.hoverElevation ? this.hoverElevation : this.elevation}`}
         style={{
           width: this.width,
+          height: this.height,
           borderRadius: this.borderRadius,
         }}
       >
@@ -60,10 +63,12 @@ export class SpecialCard {
               class={{
                 "special-card-header": true,
                 "special-card-header--has-title": this.cardTitle?.length > 0,
+                "special-card-header--has-subtitle": this.cardSubtitle?.length > 0
               }}
             >
               <slot name="header-content">
                 <h2 class="special-card-header__title">{this.cardTitle}</h2>
+                <div class="special-card-header__subtitle">{this.cardSubtitle}</div>
               </slot>
             </div>
           </slot>
