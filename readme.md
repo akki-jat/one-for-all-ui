@@ -1,3 +1,5 @@
+# One For All ![npm](https://img.shields.io/npm/v/one-for-all-ui) ![David](https://img.shields.io/david/akki-jat/one-for-all) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/akki-jat/one-for-all) ![npm bundle size](https://img.shields.io/bundlephobia/min/one-for-all-ui) ![npm](https://img.shields.io/npm/dm/one-for-all-ui) ![GitHub](https://img.shields.io/github/license/akki-jat/one-for-all)
+
 ## Installation
 #### NPM
 ```bash
