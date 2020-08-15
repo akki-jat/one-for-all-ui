@@ -25,7 +25,7 @@
   </head>
   <body>
     <div>
-      <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
+      <!-- <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
       <dark-shadow
         shadow-title="Test"
         close-on-outside-click="true"
@@ -41,7 +41,7 @@
         cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
         est laborum.
         <div slot="footer-content"><button>Test</button></div>
-      </dark-shadow>
+      </dark-shadow> -->
 
       <!-- <special-card
         id="card"
@@ -49,7 +49,7 @@
         card-title="This is Title"
         border-radius="14px"
         elevation="2"
-        hover-elevation="0"
+        hover-elevation="6"
       >
         Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -62,6 +62,10 @@
           <button>Learn More</button><button>Learn Less</button>
         </div>
       </special-card> -->
+
+      <div style="margin:100px; height: 300px; width: 500px; position: relative; background-color: yellow;">
+        <zero-gravity-button size="large" hover-elevation="6" variant="round" position="bottom-left" overlap>+</zero-gravity-button>
+      </div>
     </div>
 
     <script>
@@ -75,6 +79,9 @@
         //   darkShadowEl.open();
         // }
       }
+
+      // const zeroGravityBtn = document.querySelector('zero-gravity-button');
+      // zeroGravityBtn.addEventListener('dblclick', (e) => { console.log('i am clicked', e) })
 
       // function test(ev) {
       //   console.log("hi");

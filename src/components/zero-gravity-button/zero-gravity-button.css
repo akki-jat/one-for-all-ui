@@ -1,0 +1,140 @@
+.zero-gravity-button {
+  padding: 0;
+  outline: 0;
+  z-index: 1;
+  width: 56px;
+  height: 56px;
+  cursor: pointer;
+  position: absolute;
+  border-style: none;
+  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
+  justify-content: center;
+  color: var(--color-font);
+  border-color: var(--color-primary, white);
+  background-color: var(--color-primary, white);
+  transition: box-shadow 0.2s linear, opacity 0.2s linear;
+}
+
+.zero-gravity-button.size-small {
+  width: 40px;
+  height: 40px;
+}
+
+.zero-gravity-button.size-medium {
+  width: 48px;
+  height: 48px;
+}
+
+.zero-gravity-button.color-secondary {
+  color: var(--color-font);
+  border-color: var(--color-secondary);
+  background-color: var(--color-secondary);
+}
+
+.zero-gravity-button.variant-extended {
+  width: auto;
+  padding: 0 1rem;
+  min-height: auto;
+}
+
+.zero-gravity-button.top-left {
+  left: 1rem;
+  top: 1rem;
+}
+
+.zero-gravity-button.top-center {
+  left: 50%;
+  top: 1rem;
+}
+
+.zero-gravity-button.top-right {
+  right: 1rem;
+  top: 1rem;
+}
+
+.zero-gravity-button.center-left {
+  left: 1rem;
+  top: 50%;
+}
+
+.zero-gravity-button.center-right {
+  right: 1rem;
+  top: 50%;
+}
+
+.zero-gravity-button.bottom-left {
+  left: 1rem;
+  bottom: 1rem;
+}
+
+.zero-gravity-button.bottom-center {
+  left: 50%;
+  bottom: 1rem;
+}
+
+.zero-gravity-button.bottom-right {
+  right: 1rem;
+  bottom: 1rem;
+}
+
+.zero-gravity-button.top-left.size-large.overlap,
+.zero-gravity-button.top-right.size-large.overlap,
+.zero-gravity-button.top-center.size-large.overlap {
+  top: -28px;
+}
+
+.zero-gravity-button.top-left.size-medium.overlap,
+.zero-gravity-button.top-right.size-medium.overlap,
+.zero-gravity-button.top-center.size-medium.overlap {
+  top: -24px;
+}
+
+.zero-gravity-button.top-left.size-small.overlap,
+.zero-gravity-button.top-right.size-small.overlap,
+.zero-gravity-button.top-center.size-small.overlap {
+  top: -20px;
+}
+
+.zero-gravity-button.center-left.size-large.overlap {
+  left: -28px;
+}
+
+.zero-gravity-button.center-left.size-medium.overlap {
+  left: -24px;
+}
+
+.zero-gravity-button.center-left.size-small.overlap {
+  left: -20px;
+}
+
+.zero-gravity-button.center-right.size-large.overlap {
+  right: -28px;
+}
+
+.zero-gravity-button.center-right.size-medium.overlap {
+  right: -24px;
+}
+
+.zero-gravity-button.center-right.size-small.overlap {
+  right: -20px;
+}
+
+.zero-gravity-button.bottom-left.size-large.overlap,
+.zero-gravity-button.bottom-right.size-large.overlap,
+.zero-gravity-button.bottom-center.size-large.overlap {
+  bottom: -28px;
+}
+
+.zero-gravity-button.bottom-left.size-medium.overlap,
+.zero-gravity-button.bottom-right.size-medium.overlap,
+.zero-gravity-button.bottom-center.size-medium.overlap {
+  bottom: -24px;
+}
+
+.zero-gravity-button.bottom-left.size-small.overlap,
+.zero-gravity-button.bottom-right.size-small.overlap,
+.zero-gravity-button.bottom-center.size-small.overlap {
+  bottom: -20px;
+}

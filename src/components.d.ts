@@ -27,6 +27,24 @@ export namespace Components {
         "showHeader": boolean;
         "width": string;
     }
+    interface ZeroGravityButton {
+        "color": "primary" | "secondary";
+        "elevation": number;
+        "hoverElevation": number;
+        "overlap": boolean;
+        "position": | "top-left"
+    | "top-center"
+    | "top-right"
+    | "center-left"
+    | "enter-right"
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right";
+        "radius": string;
+        "ripple": boolean;
+        "size": "small" | "medium" | "large";
+        "variant": "round" | "extended";
+    }
 }
 declare global {
     interface HTMLDarkShadowElement extends Components.DarkShadow, HTMLStencilElement {
@@ -41,9 +59,16 @@ declare global {
         prototype: HTMLSpecialCardElement;
         new (): HTMLSpecialCardElement;
     };
+    interface HTMLZeroGravityButtonElement extends Components.ZeroGravityButton, HTMLStencilElement {
+    }
+    var HTMLZeroGravityButtonElement: {
+        prototype: HTMLZeroGravityButtonElement;
+        new (): HTMLZeroGravityButtonElement;
+    };
     interface HTMLElementTagNameMap {
         "dark-shadow": HTMLDarkShadowElement;
         "special-card": HTMLSpecialCardElement;
+        "zero-gravity-button": HTMLZeroGravityButtonElement;
     }
 }
 declare namespace LocalJSX {
@@ -70,9 +95,28 @@ declare namespace LocalJSX {
         "showHeader"?: boolean;
         "width"?: string;
     }
+    interface ZeroGravityButton {
+        "color"?: "primary" | "secondary";
+        "elevation"?: number;
+        "hoverElevation"?: number;
+        "overlap"?: boolean;
+        "position"?: | "top-left"
+    | "top-center"
+    | "top-right"
+    | "center-left"
+    | "enter-right"
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right";
+        "radius"?: string;
+        "ripple"?: boolean;
+        "size"?: "small" | "medium" | "large";
+        "variant"?: "round" | "extended";
+    }
     interface IntrinsicElements {
         "dark-shadow": DarkShadow;
         "special-card": SpecialCard;
+        "zero-gravity-button": ZeroGravityButton;
     }
 }
 export { LocalJSX as JSX };
@@ -81,6 +125,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "dark-shadow": LocalJSX.DarkShadow & JSXBase.HTMLAttributes<HTMLDarkShadowElement>;
             "special-card": LocalJSX.SpecialCard & JSXBase.HTMLAttributes<HTMLSpecialCardElement>;
+            "zero-gravity-button": LocalJSX.ZeroGravityButton & JSXBase.HTMLAttributes<HTMLZeroGravityButtonElement>;
         }
     }
 }
