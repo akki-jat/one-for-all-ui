@@ -1,4 +1,5 @@
 import { Component, h, Prop, State, Element } from "@stencil/core";
+import { HoverEvent } from "../../utils/events/hover";
 
 @Component({
   tag: "special-card",
@@ -17,40 +18,24 @@ export class SpecialCard {
 
   @State() isHover = false;
 
+  private hoverEvent = new HoverEvent((isHover: boolean) => { this.isHover = isHover });
+
   get specialCardContainerEl() {
     return this.el.querySelector('.special-card-container');
   }
 
   componentDidLoad() {
-    const containerEl = this.specialCardContainerEl;
-
-    if (containerEl) {
-      containerEl.addEventListener('mouseover', this.handleMouseOver.bind(this));
-      containerEl.addEventListener('mouseout', this.handleMouseOut.bind(this));
-    }
+    this.hoverEvent.observe(this.specialCardContainerEl);
   }
 
   disconnectedCallback() {
-    const containerEl = this.specialCardContainerEl;
-
-    if (containerEl) {
-      containerEl.removeEventListener('mouseover', this.handleMouseOver.bind(this));
-      containerEl.removeEventListener('mouseout', this.handleMouseOut.bind(this));
-    }
-  }
-
-  private handleMouseOver() {
-    this.isHover = true;
-  }
-
-  private handleMouseOut() {
-    this.isHover = false;
+    this.hoverEvent.stop(this.specialCardContainerEl);
   }
 
   render() {
     return (
       <div
-        class={`special-card-container elevation-${this.isHover && this.hoverElevation ? this.hoverElevation : this.elevation}`}
+        class={`special-card-container one-for-all-elevation-${this.isHover && this.hoverElevation ? this.hoverElevation : this.elevation}`}
         style={{
           width: this.width,
           height: this.height,
