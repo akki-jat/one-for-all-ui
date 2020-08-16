@@ -32,7 +32,8 @@ export namespace Components {
         "elevation": number;
         "hoverElevation": number;
         "overlap": boolean;
-        "position": | "top-left"
+        "position": | "custom"
+    | "top-left"
     | "top-center"
     | "top-right"
     | "center-left"
@@ -100,7 +101,8 @@ declare namespace LocalJSX {
         "elevation"?: number;
         "hoverElevation"?: number;
         "overlap"?: boolean;
-        "position"?: | "top-left"
+        "position"?: | "custom"
+    | "top-left"
     | "top-center"
     | "top-right"
     | "center-left"

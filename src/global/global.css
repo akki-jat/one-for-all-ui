@@ -120,6 +120,7 @@
 
 .one-for-all-ripple {
     overflow: hidden;
+    position: relative;
 }
 
 .one-for-all-ripple--ripple-element {

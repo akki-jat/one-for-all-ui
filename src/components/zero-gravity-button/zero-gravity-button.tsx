@@ -17,6 +17,7 @@ export class ZeroGravityButton {
   @Prop() size: "small" | "medium" | "large" = "large";
   @Prop() radius = this.variant.toLowerCase() === "round" ? "50%" : "26px";
   @Prop() position:
+    | "custom"
     | "top-left"
     | "top-center"
     | "top-right"
@@ -24,7 +25,7 @@ export class ZeroGravityButton {
     | "enter-right"
     | "bottom-left"
     | "bottom-center"
-    | "bottom-right" = "bottom-right";
+    | "bottom-right" = "custom";
 
   @State() isHover = false;
 
