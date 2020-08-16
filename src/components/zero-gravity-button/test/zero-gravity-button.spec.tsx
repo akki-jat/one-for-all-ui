@@ -7,12 +7,7 @@ describe('zero-gravity-button', () => {
       components: [ZeroGravityButton],
       html: `<zero-gravity-button></zero-gravity-button>`,
     });
-    expect(page.root).toEqualHtml(`
-      <zero-gravity-button>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </zero-gravity-button>
-    `);
+
+    expect(page.body.querySelector('zero-gravity-button')).toBeTruthy();
   });
 });
