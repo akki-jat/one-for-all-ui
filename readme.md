@@ -9,6 +9,7 @@ npm install one-for-all-ui --save
 #### JavaScript
 ```javascript
 <script src="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.css">
 ```
 
 #### Themeing
@@ -32,6 +33,8 @@ Note: Replace your_color with your choice of color.
 
 #### Zero Gravity Button (Floating Action Button)
 - JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zerogravitybutton-fab-8psx0)
+
+- Note: If you want to show button respective to any element then set position to relative for that element.
 
 <br />
 
