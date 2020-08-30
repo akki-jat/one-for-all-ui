@@ -37,7 +37,7 @@ export namespace Components {
     | "top-center"
     | "top-right"
     | "center-left"
-    | "enter-right"
+    | "center-right"
     | "bottom-left"
     | "bottom-center"
     | "bottom-right";
@@ -106,7 +106,7 @@ declare namespace LocalJSX {
     | "top-center"
     | "top-right"
     | "center-left"
-    | "enter-right"
+    | "center-right"
     | "bottom-left"
     | "bottom-center"
     | "bottom-right";

@@ -22,7 +22,7 @@ export class ZeroGravityButton {
     | "top-center"
     | "top-right"
     | "center-left"
-    | "enter-right"
+    | "center-right"
     | "bottom-left"
     | "bottom-center"
     | "bottom-right" = "custom";

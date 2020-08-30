@@ -60,12 +60,14 @@
   left: 1rem;
   top: 50%;
   position: absolute;
+  transform: translateY(-50%);
 }
 
 .zero-gravity-button.center-right {
   right: 1rem;
   top: 50%;
   position: absolute;
+  transform: translateY(-50%);
 }
 
 .zero-gravity-button.bottom-left {
