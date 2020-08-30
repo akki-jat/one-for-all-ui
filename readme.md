@@ -30,6 +30,9 @@ Note: Replace your_color with your choice of color.
 #### Special Card (Card)
 - JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-specialcard-card-insx1)
 
+#### Zero Gravity Button (Floating Action Button)
+- JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zerogravitybutton-fab-8psx0)
+
 <br />
 
 ## For Development
