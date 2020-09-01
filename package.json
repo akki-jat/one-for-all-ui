@@ -33,7 +33,7 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@stencil/core": "1.17.3",
+    "@stencil/core": "2.0.1",
     "@types/jest": "26.0.10",
     "@types/puppeteer": "3.0.1",
     "jest": "26.4.2",
