@@ -1,8 +1,9 @@
 import { Config } from '@stencil/core';
+import { reactOutputTarget } from '@stencil/react-output-target';
 
 export const config: Config = {
   buildEs5: 'prod',
-  namespace: 'one-for-all',
+  namespace: 'one-for-all-ui',
   globalStyle: 'src/global/global.css',
   outputTargets: [
     {
