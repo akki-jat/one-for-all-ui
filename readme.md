@@ -1,15 +1,19 @@
-# One For All UI ![npm](https://img.shields.io/npm/v/one-for-all-ui) ![David](https://img.shields.io/david/akki-jat/one-for-all-ui) ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/akki-jat/one-for-all-ui) ![npm bundle size](https://img.shields.io/bundlephobia/min/one-for-all-ui) ![npm](https://img.shields.io/npm/dm/one-for-all-ui) ![GitHub](https://img.shields.io/github/license/akki-jat/one-for-all-ui)
+# One For All UI
+
+## Note
+- NPM project is moved from <b>one-fro-all-ui</b> to <b>@one-for-all-ui/core</b>.
+- Bindings for react, angular and vue are coming soon for easy use.
 
 ## Installation
 #### NPM
 ```bash
-npm install one-for-all-ui --save
+npm i @one-for-all-ui/core --save
 ```
 
 #### JavaScript
 ```javascript
-<script src="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/one-for-all-ui/dist/one-for-all/one-for-all.css">
+<script src="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core@0.0.4-beta.2/dist/one-for-all-ui/one-for-all-ui.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core@0.0.4-beta.2/dist/one-for-all-ui/one-for-all-ui.css">
 ```
 
 #### Themeing
