@@ -1,8 +1,10 @@
 # One For All UI
 
+### 🎉 React Binding Is Here
+
 ## Note
 - NPM project is moved from <b>one-fro-all-ui</b> to <b>@one-for-all-ui/core</b>.
-- Bindings for react, angular and vue are coming soon for easy use.
+- Bindings for angular and vue are coming soon for easy use.
 
 ## Installation
 #### NPM
