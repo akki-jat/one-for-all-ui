@@ -1,8 +1,9 @@
 {
   "name": "@one-for-all-ui/react",
-  "version": "0.1.0",
+  "version": "0.0.4-beta.3",
   "private": true,
   "dependencies": {
+    "@one-for-all-ui/core": "0.0.4-beta.2",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
