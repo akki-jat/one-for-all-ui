@@ -20,6 +20,8 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@one-for-all-ui/core',
       proxiesFile: './bindings/react/src/components.ts',
+      includeDefineCustomElements: true,
+      includePolyfills: true
     }),
   ],
   extras: {
