@@ -48,7 +48,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "gulp setLibraryVersion"
+      "pre-commit": "gulp setLibraryVersion && git add package.json bindings/react/package.json"
     }
   },
   "license": "MIT"
