@@ -29,8 +29,8 @@ function setLibraryVersion() {
             },
             {
                 filePath: "./bindings/react/package.json",
-                pattern: /(?<=@one-for-all-ui\/core": |"version": )(.+)(?=,)/g,
-                replacement: `"${process.env.LIBRARY_VERSION}"`,
+                pattern: /(?<="@one-for-all-ui\/core": |"version": )(.+)(?=")/g,
+                replacement: `"${process.env.LIBRARY_VERSION}`,
                 destination: "./bindings/react/"
             }
         ];
