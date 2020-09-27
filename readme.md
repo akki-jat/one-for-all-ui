@@ -8,14 +8,19 @@
 
 ## Installation
 #### NPM
-```bash
-npm i @one-for-all-ui/core --save
-```
+- React (For more info look at examples)
+    ```bash
+    npm i @one-for-all-ui/react --save
+    ```
+- Other
+    ```bash
+    npm i @one-for-all-ui/core --save
+    ```
 
 #### JavaScript
 ```javascript
-<script src="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core@0.0.4-beta.2/dist/one-for-all-ui/one-for-all-ui.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core@0.0.4-beta.2/dist/one-for-all-ui/one-for-all-ui.css">
+<script src="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core/dist/one-for-all-ui/one-for-all-ui.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@one-for-all-ui/core/dist/one-for-all-ui/one-for-all-ui.css">
 ```
 
 #### Themeing
@@ -33,12 +38,15 @@ Note: Replace your_color with your choice of color.
 ## Example
 #### Dark Shadow (Modal)
 - JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-darkshadow-modal-zkjmi)
+- React \- [Example Link](https://codesandbox.io/s/react-one-for-all-ui-darkshadow-modal-r9lxx)
 
 #### Special Card (Card)
 - JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-specialcard-card-insx1)
+- React \- [Example Link](https://codesandbox.io/s/react-one-for-all-ui-specialcard-card-db04u)
 
 #### Zero Gravity Button (Floating Action Button)
 - JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-zerogravitybutton-fab-8psx0)
+- React \- [Example Link](https://codesandbox.io/s/react-one-for-all-ui-zerogravitybutton-fab-335lc)
 
 - Note: If you want to show button respective to any element then set position to relative for that element.
 
