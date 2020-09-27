@@ -1,4 +1,4 @@
-const { dest, src } = require("gulp");
+const { dest, src, series } = require("gulp");
 const replace = require("gulp-replace");
 require("dotenv").config();
 
@@ -16,39 +16,27 @@ function replaceTextInFile(filePath, pattern, replacement, destination) {
 }
 
 /**
- * Sets library version for core and binding projects
+ * Sets core library version
  */
-function setLibraryVersion() {
-    if (process.env.LIBRARY_VERSION) {
-        const files = [
-            {
-                filePath: "./package.json",
-                pattern: /(?<="version": )(.+)(?=,)/,
-                replacement: `"${process.env.LIBRARY_VERSION}"`,
-                destination: "./"
-            },
-            {
-                filePath: "./bindings/react/package.json",
-                pattern: /(?<="@one-for-all-ui\/core": |"version": )(.+)(?=")/g,
-                replacement: `"${process.env.LIBRARY_VERSION}`,
-                destination: "./bindings/react/"
-            }
-        ];
-
-        return Promise.all(files.map(file => {
-            replaceTextInFile(
-                file.filePath,
-                file.pattern,
-                file.replacement,
-                file.destination
-            );
-
-            Promise.resolve();
-        }));
-    }
-
-    return Promise.resolve();
+function setCoreLibraryVersion() {
+    return replaceTextInFile(
+        "./package.json",
+        /(?<="version": )(.+)(?=,)/,
+        `"${process.env.LIBRARY_VERSION}"`,
+        "./"
+    );
 }
 
-exports.setLibraryVersion = setLibraryVersion;
-exports.default = setLibraryVersion;
+/**
+ * Sets react library version
+ */
+function setReactLibraryVersion() {
+    return replaceTextInFile(
+        "./bindings/react/package.json",
+        /(?<="@one-for-all-ui\/core": |"version": )(.+)(?=")/g,
+        `"${process.env.LIBRARY_VERSION}"`,
+        "./bindings/react/"
+    );
+}
+
+exports.setLibraryVersion = exports.default = series(setCoreLibraryVersion, setReactLibraryVersion);
