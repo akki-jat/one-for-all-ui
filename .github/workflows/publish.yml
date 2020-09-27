@@ -13,8 +13,18 @@ jobs:
       with:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
-    - run: npm ci
-    - run: npm test
-    - run: npm publish
+    - name: Publish Core Package
+      run: |
+        npm ci
+        npm test
+        npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    - name: Publish React Package
+      run: |
+        npm ci
+        npm test
+        npm publish
+      working-directory: ./bindings/react
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

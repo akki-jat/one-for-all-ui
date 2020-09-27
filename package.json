@@ -1,6 +1,6 @@
 {
   "name": "@one-for-all-ui/core",
-  "version": "0.0.4-beta.2",
+  "version": "0.0.4-beta.7",
   "author": {
     "name": "Akshay Jat (akki-jat)",
     "email": "akshayjat06@gmail.com",
@@ -38,9 +38,18 @@
     "@stencil/react-output-target": "0.0.9",
     "@types/jest": "26.0.14",
     "@types/puppeteer": "3.0.2",
+    "dotenv": "^8.2.0",
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.0.0",
+    "husky": "^4.3.0",
     "jest": "26.4.2",
     "jest-cli": "26.4.2",
     "puppeteer": "5.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "gulp setLibraryVersion && git add package.json bindings/react/package.json"
+    }
   },
   "license": "MIT"
 }

@@ -16,7 +16,13 @@ export const config: Config = {
     {
       type: 'www',
       serviceWorker: null // disable service workers
-    }
+    },
+    reactOutputTarget({
+      componentCorePackage: '@one-for-all-ui/core',
+      proxiesFile: './bindings/react/src/components.ts',
+      includeDefineCustomElements: true,
+      includePolyfills: true,
+    }),
   ],
   extras: {
     cssVarsShim: true,
