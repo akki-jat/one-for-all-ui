@@ -41,9 +41,15 @@
     "dotenv": "^8.2.0",
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
+    "husky": "^4.3.0",
     "jest": "26.4.2",
     "jest-cli": "26.4.2",
     "puppeteer": "5.3.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-push": "gulp setLibraryVersion"
+    }
   },
   "license": "MIT"
 }
