@@ -34,7 +34,7 @@ function setReactLibraryVersion() {
     return replaceTextInFile(
         "./bindings/react/package.json",
         /(?<="@one-for-all-ui\/core": |"version": )(.+)(?=")/g,
-        `"${process.env.LIBRARY_VERSION}"`,
+        `"${process.env.LIBRARY_VERSION}`,
         "./bindings/react/"
     );
 }
