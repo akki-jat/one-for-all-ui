@@ -35,12 +35,16 @@ function setLibraryVersion() {
             }
         ];
 
-        return Promise.all(files.map(file => replaceTextInFile(
-            file.filePath,
-            file.pattern,
-            file.replacement,
-            file.destination
-        )));
+        return Promise.all(files.map(file => {
+            replaceTextInFile(
+                file.filePath,
+                file.pattern,
+                file.replacement,
+                file.destination
+            );
+
+            Promise.resolve();
+        }));
     }
 
     return Promise.resolve();
