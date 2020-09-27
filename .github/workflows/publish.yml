@@ -22,8 +22,7 @@ jobs:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     - name: Publish React Package
       run: |
-        npm ci
-        npm test
+        npm i
         npm publish
       working-directory: ./bindings/react
       env:
