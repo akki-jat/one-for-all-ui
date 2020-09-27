@@ -15,7 +15,7 @@ npm install --save @one-for-all-ui/react
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from '@one-for-all-ui/react'
+import { MyComponent } from '@one-for-all-ui/react'
 import '@one-for-all-ui/react/dist/index.css'
 
 class Example extends Component {

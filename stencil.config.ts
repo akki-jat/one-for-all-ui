@@ -21,7 +21,7 @@ export const config: Config = {
       componentCorePackage: '@one-for-all-ui/core',
       proxiesFile: './bindings/react/src/components.ts',
       includeDefineCustomElements: true,
-      includePolyfills: true
+      includePolyfills: true,
     }),
   ],
   extras: {
