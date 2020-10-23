@@ -1,3 +1,18 @@
-:host {
-  display: block;
+.quirk-boomerang-container {
+  position: relative;
+}
+
+.quirk-boomerang-container .quirk-container {
+  overflow-x: hidden;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(4, calc(100% / 4));
+  grid-auto-columns: calc(100% / 4);
+}
+
+.quirk-boomerang-container .quirk-container > * {
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

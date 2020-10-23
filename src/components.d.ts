@@ -17,6 +17,9 @@ export namespace Components {
         "visible": boolean;
         "width": string;
     }
+    interface QuirkBoomerang {
+        "moveQuirk": () => Promise<void>;
+    }
     interface SpecialCard {
         "borderRadius": string;
         "cardSubtitle": string;
@@ -54,6 +57,12 @@ declare global {
         prototype: HTMLDarkShadowElement;
         new (): HTMLDarkShadowElement;
     };
+    interface HTMLQuirkBoomerangElement extends Components.QuirkBoomerang, HTMLStencilElement {
+    }
+    var HTMLQuirkBoomerangElement: {
+        prototype: HTMLQuirkBoomerangElement;
+        new (): HTMLQuirkBoomerangElement;
+    };
     interface HTMLSpecialCardElement extends Components.SpecialCard, HTMLStencilElement {
     }
     var HTMLSpecialCardElement: {
@@ -68,6 +77,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "dark-shadow": HTMLDarkShadowElement;
+        "quirk-boomerang": HTMLQuirkBoomerangElement;
         "special-card": HTMLSpecialCardElement;
         "zero-gravity-button": HTMLZeroGravityButtonElement;
     }
@@ -85,6 +95,8 @@ declare namespace LocalJSX {
         "showCloseIcon"?: boolean;
         "visible"?: boolean;
         "width"?: string;
+    }
+    interface QuirkBoomerang {
     }
     interface SpecialCard {
         "borderRadius"?: string;
@@ -117,6 +129,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "dark-shadow": DarkShadow;
+        "quirk-boomerang": QuirkBoomerang;
         "special-card": SpecialCard;
         "zero-gravity-button": ZeroGravityButton;
     }
@@ -126,6 +139,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "dark-shadow": LocalJSX.DarkShadow & JSXBase.HTMLAttributes<HTMLDarkShadowElement>;
+            "quirk-boomerang": LocalJSX.QuirkBoomerang & JSXBase.HTMLAttributes<HTMLQuirkBoomerangElement>;
             "special-card": LocalJSX.SpecialCard & JSXBase.HTMLAttributes<HTMLSpecialCardElement>;
             "zero-gravity-button": LocalJSX.ZeroGravityButton & JSXBase.HTMLAttributes<HTMLZeroGravityButtonElement>;
         }
