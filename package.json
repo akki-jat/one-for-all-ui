@@ -43,7 +43,7 @@
     "gulp-replace": "^1.0.0",
     "husky": "^4.3.0",
     "jest": "26.6.1",
-    "jest-cli": "26.6.0",
+    "jest-cli": "26.6.1",
     "puppeteer": "5.3.1"
   },
   "husky": {
