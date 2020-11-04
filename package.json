@@ -37,7 +37,7 @@
     "@stencil/core": "2.2.0",
     "@stencil/react-output-target": "0.0.9",
     "@types/jest": "26.0.15",
-    "@types/puppeteer": "3.0.4",
+    "@types/puppeteer": "5.4.0",
     "dotenv": "^8.2.0",
     "gulp": "^4.0.2",
     "gulp-replace": "^1.0.0",
