@@ -1,13 +1,16 @@
 .quirk-boomerang-container {
   position: relative;
+  margin-left: 1.4em;
+  margin-right: 1.4em;
 }
 
 .quirk-boomerang-container .quirk-container {
   overflow-x: hidden;
   display: grid;
   grid-auto-flow: column;
-  grid-template-columns: repeat(4, calc(100% / 4));
-  grid-auto-columns: calc(100% / 4);
+  /* grid-template-columns: 70%;
+  grid-auto-columns: 70%; */
+  scroll-snap-type: x mandatory;
 }
 
 .quirk-boomerang-container .quirk-container > * {
@@ -15,4 +18,32 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  scroll-snap-align: start;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 767.9px) {
+  .quirk-boomerang-container .quirk-container {
+    /* overflow-x: scroll; */
+    grid-template-columns: repeat(var(--quirk-small-count), calc(100% / var(--quirk-small-count)));
+    grid-auto-columns: calc(100% / var(--quirk-small-count));
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .quirk-boomerang-container .quirk-container {
+    /* overflow-x: scroll; */
+    grid-template-columns: repeat(var(--quirk-medium-count), calc(100% / var(--quirk-medium-count)));
+    grid-auto-columns: calc(100% / var(--quirk-medium-count));
+  }
+}
+
+/* Large devices (desktops, 992px and up) or Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 992px), (min-width: 1200px)  {
+  .quirk-boomerang-container .quirk-container {
+    overflow-x: hidden;
+    grid-template-columns: repeat(var(--quirk-large-count), calc(100% / var(--quirk-large-count)));
+    grid-auto-columns: calc(100% / var(--quirk-large-count));
+  }
 }

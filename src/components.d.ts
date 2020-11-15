@@ -18,7 +18,11 @@ export namespace Components {
         "width": string;
     }
     interface QuirkBoomerang {
+        "displayCount": | { small: string, medium: string, large: string }
+    | string | number;
+        "moveCount": number;
         "moveQuirk": () => Promise<void>;
+        "totalElements": number;
     }
     interface SpecialCard {
         "borderRadius": string;
@@ -97,6 +101,10 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface QuirkBoomerang {
+        "displayCount"?: | { small: string, medium: string, large: string }
+    | string | number;
+        "moveCount"?: number;
+        "totalElements"?: number;
     }
     interface SpecialCard {
         "borderRadius"?: string;
