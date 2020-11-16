@@ -14,7 +14,7 @@ export class QuirkBoomerang {
     | { small: string, medium: string, large: string }
     | string | number = { small: "1", medium: "2", large: "4" };
 
-  @State() moveButtonCount: number = 1;
+  @State() lastMovedElement: Element;
 
   get quirkContainerEl() {
     return this.quirkEl.querySelector("quirk-boomerang .quirk-container");
@@ -52,18 +52,23 @@ export class QuirkBoomerang {
   async moveQuirk() {
     if (this.visibleQuirks && this.visibleQuirks.length) {
       const currentEndIndex = +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
-      const moveToIndex = currentEndIndex + (this.moveCount * this.moveButtonCount);
-      const moveEl = this.quirkContainerEl.querySelector(`[quirk-index="${moveToIndex}"]`) || this.quirkContainerEl.lastElementChild;
+      const moveToIndex = currentEndIndex + this.moveCount;
+      let moveEl = this.quirkContainerEl.querySelector(`[quirk-index="${moveToIndex}"]`) || this.quirkContainerEl.lastElementChild;
+
+      if (this.lastMovedElement === moveEl) {
+        moveEl = this.quirkContainerEl.querySelector(`[quirk-index="${moveToIndex + this.moveCount}"]`) || this.quirkContainerEl.lastElementChild;
+      }
 
       if (moveEl) {
+        this.lastMovedElement = moveEl;
         moveEl.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-        this.setVisibleQuirksAfterScrollEnd(moveEl as HTMLElement, this.setVisibleQuirks.bind(this), true);
+        this.setVisibleQuirksAfterScrollEnd(moveEl as HTMLElement, this.setVisibleQuirks.bind(this));
       }
     }
   }
 
   setVisibleQuirks() {
-    let index = this.visibleQuirks && this.visibleQuirks.length ? +this.visibleQuirks[0].getAttribute("quirk-index") + 1 : 0;
+    let index = this.visibleQuirks && this.visibleQuirks.length ? +this.visibleQuirks[0].getAttribute("quirk-index") : 0;
     this.quirkContainerEl.querySelectorAll("[quirk-index]").forEach(quirk => quirk.classList.remove("quirk-visible"));
     let visibleQuirkClassSetFailCount = 0;
 
@@ -84,18 +89,13 @@ export class QuirkBoomerang {
     }
   }
 
-  setVisibleQuirksAfterScrollEnd(el: HTMLElement, fn: () => void, increaseClickCount = false) {
+  setVisibleQuirksAfterScrollEnd(el: HTMLElement, fn: () => void) {
     let timeout: number;
 
     if (isElementInViewport(el)) {
       fn();
-      this.moveButtonCount = 1;
       window.clearTimeout(timeout);
     } else {
-      if (increaseClickCount) {
-        this.moveButtonCount++;
-      }
-
       timeout = window.setTimeout(() => {
         this.setVisibleQuirksAfterScrollEnd(el, fn);
       }, 0);
