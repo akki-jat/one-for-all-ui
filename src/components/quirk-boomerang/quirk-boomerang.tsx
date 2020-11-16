@@ -25,10 +25,9 @@ export class QuirkBoomerang {
   }
 
   get quirkCount() {
-    let count = 0;
+    let count = 1;
 
     try {
-
       if (typeof this.displayCount === "object") {
         return this.displayCount;
       }
@@ -107,10 +106,6 @@ export class QuirkBoomerang {
   componentDidLoad() {
     this.setVisibleQuirks();
   }
-
-  // componentDidRender() {
-  //   this.setVisibleQuirks();
-  // }
 
   render() {
     return (
