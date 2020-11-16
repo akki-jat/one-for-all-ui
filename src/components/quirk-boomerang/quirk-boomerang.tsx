@@ -86,9 +86,8 @@ export class QuirkBoomerang {
 
   setVisibleQuirksAfterScrollEnd(el: HTMLElement, fn: () => void, increaseClickCount = false) {
     let timeout: number;
-    let isElInViewport = isElementInViewport(el);
 
-    if (isElInViewport) {
+    if (isElementInViewport(el)) {
       fn();
       this.moveButtonCount = 1;
       window.clearTimeout(timeout);
