@@ -15,6 +15,7 @@ export class QuirkBoomerang {
     | string | number = { small: "1", medium: "2", large: "4" };
 
   @State() lastMovedElement: Element;
+  scrollTimeout: number;
 
   get quirkContainerEl() {
     return this.quirkEl.querySelector("quirk-boomerang .quirk-container");
@@ -62,7 +63,6 @@ export class QuirkBoomerang {
       if (moveEl) {
         this.lastMovedElement = moveEl;
         moveEl.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
-        this.setVisibleQuirksAfterScrollEnd(moveEl as HTMLElement, this.setVisibleQuirks.bind(this));
       }
     }
   }
@@ -89,21 +89,23 @@ export class QuirkBoomerang {
     }
   }
 
-  setVisibleQuirksAfterScrollEnd(el: HTMLElement, fn: () => void) {
-    let timeout: number;
-
-    if (isElementInViewport(el)) {
-      fn();
-      window.clearTimeout(timeout);
-    } else {
-      timeout = window.setTimeout(() => {
-        this.setVisibleQuirksAfterScrollEnd(el, fn);
-      }, 0);
-    };
-  };
+  scrollEventCallback(_e: Event) {
+    clearTimeout(this.scrollTimeout);
+    this.scrollTimeout = window.setTimeout(() => {
+      this.setVisibleQuirks();
+    }, 0);
+  }
 
   componentDidLoad() {
     this.setVisibleQuirks();
+  }
+
+  componentDidRender() {
+    this.quirkContainerEl.addEventListener('scroll', this.scrollEventCallback.bind(this));
+  }
+
+  disconnectedCallback() {
+    this.quirkContainerEl.removeEventListener("scroll", this.scrollEventCallback.bind(this));
   }
 
   render() {
