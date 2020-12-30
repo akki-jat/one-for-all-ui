@@ -15,6 +15,7 @@ export class QuirkBoomerang {
     | string | number = { small: "1", medium: "2", large: "4" };
 
   @State() lastMovedElement: Element;
+  @State() moveDirection: "forward" | "backward";
   scrollTimeout: number;
 
   get quirkContainerEl() {
@@ -50,10 +51,12 @@ export class QuirkBoomerang {
   }
 
   @Method()
-  async moveQuirk() {
+  async moveQuirk(isMoveForward = true) {
+    this.moveDirection = isMoveForward ? "forward" : "backward";
+
     if (this.visibleQuirks && this.visibleQuirks.length) {
       const currentEndIndex = +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
-      const moveToIndex = currentEndIndex + this.moveCount;
+      const moveToIndex = isMoveForward ? currentEndIndex + this.moveCount : currentEndIndex - this.moveCount;
       let moveEl = this.quirkContainerEl.querySelector(`[quirk-index="${moveToIndex}"]`) || this.quirkContainerEl.lastElementChild;
 
       if (this.lastMovedElement === moveEl) {
@@ -68,7 +71,10 @@ export class QuirkBoomerang {
   }
 
   setVisibleQuirks() {
-    let index = this.visibleQuirks && this.visibleQuirks.length ? +this.visibleQuirks[0].getAttribute("quirk-index") : 0;
+    const isMoveForward = this.moveDirection === "forward";
+    let index = this.visibleQuirks && this.visibleQuirks.length
+      ? +this.visibleQuirks[isMoveForward ? 0 : this.visibleQuirks.length - 1].getAttribute("quirk-index")
+      : 0;
     this.quirkContainerEl.querySelectorAll("[quirk-index]").forEach(quirk => quirk.classList.remove("quirk-visible"));
     let visibleQuirkClassSetFailCount = 0;
 
@@ -81,7 +87,11 @@ export class QuirkBoomerang {
         visibleQuirkClassSetFailCount++;
       }
 
-      index++;
+      if (this.moveDirection === "backward") {
+        index--;
+      } else {
+        index++;
+      }
 
       if (visibleQuirkClassSetFailCount > this.elementCount) {
         break;
@@ -121,6 +131,7 @@ export class QuirkBoomerang {
             variant="round"
             position="center-left"
             overlap
+            onClick={this.moveQuirk.bind(this, false)}
           >
             &lt;
           </zero-gravity-button>
