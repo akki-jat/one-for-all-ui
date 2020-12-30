@@ -52,7 +52,7 @@ export class QuirkBoomerang {
   }
 
   @Method()
-  async moveQuirk(isMoveForward = true) {
+  async moveQuirk(isMoveForward: boolean) {
     this.moveDirection = isMoveForward ? "forward" : "backward";
 
     if (this.visibleQuirks && this.visibleQuirks.length) {
@@ -73,7 +73,7 @@ export class QuirkBoomerang {
 
   setVisibleQuirks() {
     const isFirstRender = !(this.visibleQuirks && this.visibleQuirks.length)
-    const isMoveForward = this.moveDirection === "forward";
+    const isMoveForward = this.moveDirection == null || this.moveDirection === "forward";
     const firstVisibleQuirkIndex = isFirstRender ? 0 : +this.visibleQuirks[0].getAttribute("quirk-index");
     const lastVisibleQuirkIndex = isFirstRender ? this.moveCount : +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
     let index = isMoveForward ? firstVisibleQuirkIndex : lastVisibleQuirkIndex;
@@ -100,14 +100,14 @@ export class QuirkBoomerang {
       }
     }
 
-    this.setMoveButtonVisibility(firstVisibleQuirkIndex, lastVisibleQuirkIndex + this.moveCount, isFirstRender);
+    this.setMoveButtonVisibility(firstVisibleQuirkIndex, lastVisibleQuirkIndex, isFirstRender);
   }
 
   setMoveButtonVisibility(firstVisibleQuirkIndex: number, lastVisibleQuirkIndex: number, isFirstRender: boolean) {
     if (!isFirstRender) {
       this.visibleMoveButton = {
         ...this.visibleMoveButton,
-        forward: lastVisibleQuirkIndex < this.elementCount,
+        forward: lastVisibleQuirkIndex < this.elementCount - 1,
         backward: firstVisibleQuirkIndex > 0
       }
     }
@@ -161,7 +161,7 @@ export class QuirkBoomerang {
               variant="round"
               position="center-right"
               overlap
-              onClick={this.moveQuirk.bind(this)}
+              onClick={this.moveQuirk.bind(this, true)}
             >
               &gt;
           </zero-gravity-button>
