@@ -16,6 +16,7 @@ export class QuirkBoomerang {
 
   @State() lastMovedElement: Element;
   @State() moveDirection: "forward" | "backward";
+  @State() visibleMoveButton = { forward: true, backward: false };
   scrollTimeout: number;
 
   get quirkContainerEl() {
@@ -71,10 +72,11 @@ export class QuirkBoomerang {
   }
 
   setVisibleQuirks() {
+    const isFirstRender = !(this.visibleQuirks && this.visibleQuirks.length)
     const isMoveForward = this.moveDirection === "forward";
-    let index = this.visibleQuirks && this.visibleQuirks.length
-      ? +this.visibleQuirks[isMoveForward ? 0 : this.visibleQuirks.length - 1].getAttribute("quirk-index")
-      : 0;
+    const firstVisibleQuirkIndex = isFirstRender ? 0 : +this.visibleQuirks[0].getAttribute("quirk-index");
+    const lastVisibleQuirkIndex = isFirstRender ? this.moveCount : +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
+    let index = isMoveForward ? firstVisibleQuirkIndex : lastVisibleQuirkIndex;
     this.quirkContainerEl.querySelectorAll("[quirk-index]").forEach(quirk => quirk.classList.remove("quirk-visible"));
     let visibleQuirkClassSetFailCount = 0;
 
@@ -95,6 +97,18 @@ export class QuirkBoomerang {
 
       if (visibleQuirkClassSetFailCount > this.elementCount) {
         break;
+      }
+    }
+
+    this.setMoveButtonVisibility(firstVisibleQuirkIndex, lastVisibleQuirkIndex + this.moveCount, isFirstRender);
+  }
+
+  setMoveButtonVisibility(firstVisibleQuirkIndex: number, lastVisibleQuirkIndex: number, isFirstRender: boolean) {
+    if (!isFirstRender) {
+      this.visibleMoveButton = {
+        ...this.visibleMoveButton,
+        forward: lastVisibleQuirkIndex < this.elementCount,
+        backward: firstVisibleQuirkIndex > 0
       }
     }
   }
@@ -124,30 +138,35 @@ export class QuirkBoomerang {
         <div class="quirk-container" style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
           <slot></slot>
         </div>
-        <slot name="left-button">
-          <zero-gravity-button
-            size="large"
-            hover-elevation="6"
-            variant="round"
-            position="center-left"
-            overlap
-            onClick={this.moveQuirk.bind(this, false)}
-          >
-            &lt;
+        { this.visibleMoveButton.backward &&
+          <slot name="left-button">
+            <zero-gravity-button
+              size="large"
+              hover-elevation="6"
+              variant="round"
+              position="center-left"
+              overlap
+              onClick={this.moveQuirk.bind(this, false)}
+            >
+              &lt;
           </zero-gravity-button>
-        </slot>
-        <slot name="right-button">
-          <zero-gravity-button
-            size="large"
-            hover-elevation="6"
-            variant="round"
-            position="center-right"
-            overlap
-            onClick={this.moveQuirk.bind(this)}
-          >
-            &gt;
+          </slot>
+        }
+        {
+          this.visibleMoveButton.forward &&
+          <slot name="right-button">
+            <zero-gravity-button
+              size="large"
+              hover-elevation="6"
+              variant="round"
+              position="center-right"
+              overlap
+              onClick={this.moveQuirk.bind(this)}
+            >
+              &gt;
           </zero-gravity-button>
-        </slot>
+          </slot>
+        }
       </div>
     );
   }
