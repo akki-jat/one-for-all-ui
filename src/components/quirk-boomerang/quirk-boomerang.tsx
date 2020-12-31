@@ -106,7 +106,11 @@ export class QuirkBoomerang {
       }
     }
 
-    this.setMoveButtonVisibility(firstVisibleQuirkIndex, lastVisibleQuirkIndex, isFirstRender);
+    this.setMoveButtonVisibility(
+      isMoveForward ? firstVisibleQuirkIndex : firstVisibleQuirkIndex - this.moveCount,
+      isMoveForward ? lastVisibleQuirkIndex + this.moveCount : lastVisibleQuirkIndex,
+      isFirstRender
+    );
   }
 
   setMoveButtonVisibility(firstVisibleQuirkIndex: number, lastVisibleQuirkIndex: number, isFirstRender: boolean) {
