@@ -1,5 +1,5 @@
 import { Component, h, Method, Prop, State, Element } from '@stencil/core';
-import { isElementInViewport } from '../../utils/utils';
+import { isElementVisibleInViewportAndParent } from '../../utils/utils';
 
 @Component({
   tag: 'quirk-boomerang',
@@ -89,7 +89,7 @@ export class QuirkBoomerang {
     while (true) {
       const el = this.quirkContainerEl.querySelector(`[quirk-index="${index}"]`);
 
-      if (el && isElementInViewport(el)) {
+      if (el && isElementVisibleInViewportAndParent(el)) {
         el.classList.add("quirk-visible");
       } else {
         visibleQuirkClassSetFailCount++;
