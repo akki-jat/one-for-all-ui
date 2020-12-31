@@ -4,7 +4,6 @@ import { isElementVisibleInViewportAndParent } from '../../utils/utils';
 @Component({
   tag: 'quirk-boomerang',
   styleUrl: 'quirk-boomerang.css',
-  shadow: false,
 })
 export class QuirkBoomerang {
   @Element() quirkEl: HTMLElement;
