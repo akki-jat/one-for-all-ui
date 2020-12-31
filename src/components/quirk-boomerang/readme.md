@@ -16,7 +16,7 @@
 
 ## Methods
 
-### `moveQuirk() => Promise<void>`
+### `moveQuirk(isMoveForward: boolean) => Promise<void>`
 
 
 
@@ -26,19 +26,6 @@ Type: `Promise<void>`
 
 
 
-
-## Dependencies
-
-### Depends on
-
-- [zero-gravity-button](../zero-gravity-button)
-
-### Graph
-```mermaid
-graph TD;
-  quirk-boomerang --> zero-gravity-button
-  style quirk-boomerang fill:#f9f,stroke:#333,stroke-width:4px
-```
 
 ----------------------------------------------
 

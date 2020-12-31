@@ -1,7 +1,35 @@
 .quirk-boomerang-container {
   position: relative;
-  margin-left: 1.4em;
-  margin-right: 1.4em;
+  /* margin-left: 1.4em;
+  margin-right: 1.4em; */
+}
+
+.quirk-boomerang-container .move-btns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.quirk-boomerang-container .move-btns button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 2rem;
+}
+
+.quirk-boomerang-container .move-btns button:focus {
+  outline: inherit;
+}
+
+.quirk-boomerang-container .move-btns .move-btn-wrapper {
+  position: absolute;
+  top: calc(50% - calc(3rem - 22px));
+}
+
+.quirk-boomerang-container .move-btns .backward-move-btn-wrapper {
+  left: 0;
+}
+
+.quirk-boomerang-container .move-btns .forward-move-btn-wrapper {
+  right: 0;
 }
 
 .quirk-boomerang-container .quirk-container {

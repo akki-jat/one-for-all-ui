@@ -145,38 +145,33 @@ export class QuirkBoomerang {
   render() {
     return (
       <div class="quirk-boomerang-container">
-        <div class="quirk-container" style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
-          <slot></slot>
-        </div>
-        { this.visibleMoveButton.backward &&
+        <div class="move-btns">
           <slot name="left-button">
-            <zero-gravity-button
-              size="large"
-              hover-elevation="6"
-              variant="round"
-              position="center-left"
-              overlap
+            <div class="move-btn-wrapper backward-move-btn-wrapper">
+              <button
+                class="move-btn backward-move backward-move-btn"
+                disabled={!this.visibleMoveButton.backward}
               onClick={this.moveQuirk.bind(this, false)}
             >
               &lt;
-          </zero-gravity-button>
+            </button>
+            </div>
           </slot>
-        }
-        {
-          this.visibleMoveButton.forward &&
           <slot name="right-button">
-            <zero-gravity-button
-              size="large"
-              hover-elevation="6"
-              variant="round"
-              position="center-right"
-              overlap
+            <div class="move-btn-wrapper forward-move-btn-wrapper">
+              <button
+                class="move-btn forward-move forward-move-btn"
+                disabled={!this.visibleMoveButton.forward}
               onClick={this.moveQuirk.bind(this, true)}
             >
               &gt;
-          </zero-gravity-button>
+            </button>
+            </div>
           </slot>
-        }
+        </div>
+        <div class="quirk-container" style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
+          <slot></slot>
+        </div>
       </div>
     );
   }

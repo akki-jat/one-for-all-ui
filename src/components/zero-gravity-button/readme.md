@@ -20,19 +20,6 @@
 | `variant`        | `variant`         |             | `"extended" \| "round"`                                                                                                                          | `"round"`                                                 |
 
 
-## Dependencies
-
-### Used by
-
- - [quirk-boomerang](../quirk-boomerang)
-
-### Graph
-```mermaid
-graph TD;
-  quirk-boomerang --> zero-gravity-button
-  style zero-gravity-button fill:#f9f,stroke:#333,stroke-width:4px
-```
-
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*
