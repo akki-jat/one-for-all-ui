@@ -72,13 +72,19 @@ export class QuirkBoomerang {
   }
 
   setVisibleQuirks() {
-    const isFirstRender = !(this.visibleQuirks && this.visibleQuirks.length)
+    let visibleQuirkClassSetFailCount = 0;
+    const isFirstRender = this.lastMovedElement == null;
+    const lastMoveElementIndex = isFirstRender ? 0 : +this.lastMovedElement.getAttribute("quirk-index");
+    const isVisibleQuirksAvailable = this.visibleQuirks && this.visibleQuirks.length;
     const isMoveForward = this.moveDirection == null || this.moveDirection === "forward";
-    const firstVisibleQuirkIndex = isFirstRender ? 0 : +this.visibleQuirks[0].getAttribute("quirk-index");
-    const lastVisibleQuirkIndex = isFirstRender ? this.moveCount : +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
+    const firstVisibleQuirkIndex = isFirstRender ? 0 : isVisibleQuirksAvailable
+      ? +this.visibleQuirks[0].getAttribute("quirk-index")
+      : lastMoveElementIndex;
+    const lastVisibleQuirkIndex = isFirstRender ? this.moveCount : isVisibleQuirksAvailable
+      ? +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index")
+      : lastMoveElementIndex;
     let index = isMoveForward ? firstVisibleQuirkIndex : lastVisibleQuirkIndex;
     this.quirkContainerEl.querySelectorAll("[quirk-index]").forEach(quirk => quirk.classList.remove("quirk-visible"));
-    let visibleQuirkClassSetFailCount = 0;
 
     while (true) {
       const el = this.quirkContainerEl.querySelector(`[quirk-index="${index}"]`);
@@ -89,10 +95,10 @@ export class QuirkBoomerang {
         visibleQuirkClassSetFailCount++;
       }
 
-      if (this.moveDirection === "backward") {
-        index--;
-      } else {
+      if (isMoveForward) {
         index++;
+      } else {
+        index--;
       }
 
       if (visibleQuirkClassSetFailCount > this.elementCount) {
