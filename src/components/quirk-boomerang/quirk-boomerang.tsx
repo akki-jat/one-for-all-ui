@@ -16,7 +16,7 @@ export class QuirkBoomerang {
   @State() lastMovedElement: Element;
   @State() moveDirection: "forward" | "backward";
   @State() visibleMoveButton = { forward: true, backward: false };
-  scrollTimeout: number;
+  scrollTimeoutId: number;
 
   get quirkContainerEl() {
     return this.quirkEl.querySelector("quirk-boomerang .quirk-container");
@@ -123,8 +123,11 @@ export class QuirkBoomerang {
   }
 
   scrollEventCallback(_e: Event) {
-    clearTimeout(this.scrollTimeout);
-    this.scrollTimeout = window.setTimeout(() => {
+    if (this.scrollTimeoutId != null) {
+      clearTimeout(this.scrollTimeoutId);
+    }
+
+    this.scrollTimeoutId = window.setTimeout(() => {
       this.setVisibleQuirks();
     }, 0);
   }
