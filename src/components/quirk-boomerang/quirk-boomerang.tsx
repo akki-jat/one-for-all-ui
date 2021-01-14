@@ -50,13 +50,22 @@ export class QuirkBoomerang {
     return (this.totalElements || document.querySelectorAll("quirk-boomerang .quirk-container > [quirk-index]").length);
   }
 
-  @Method()
-  async moveQuirk(isMoveForward: boolean) {
-    this.moveDirection = isMoveForward ? "forward" : "backward";
+  get lastMovedElementIndex() {
+    return this.lastMovedElement ? +this.lastMovedElement.getAttribute("quirk-index") : -1;
+  }
 
+  @Method()
+  async moveQuirk(isMoveForward: boolean | undefined, moveElementIndex: number | undefined = undefined) {
+    if (moveElementIndex) {
+      this.moveDirection = moveElementIndex >= this.lastMovedElementIndex ? "forward" : "backward";
+      isMoveForward = this.moveDirection === "forward";
+    }
+
+    // if (this.visibleQuirks && this.visibleQuirks.length && (!moveElementIndex || (moveElementIndex && moveElementIndex !== this.lastMovedElementIndex))) {
     if (this.visibleQuirks && this.visibleQuirks.length) {
       const currentEndIndex = +this.visibleQuirks[this.visibleQuirks.length - 1].getAttribute("quirk-index");
-      const moveToIndex = isMoveForward ? currentEndIndex + this.moveCount : currentEndIndex - this.moveCount;
+      const moveToIndex = moveElementIndex != null ? moveElementIndex
+        : isMoveForward ? currentEndIndex + this.moveCount : currentEndIndex - this.moveCount;
       let moveEl = this.quirkContainerEl.querySelector(`[quirk-index="${moveToIndex}"]`) || this.quirkContainerEl.lastElementChild;
 
       if (this.lastMovedElement === moveEl) {
@@ -122,6 +131,13 @@ export class QuirkBoomerang {
     }
   }
 
+  keyPressHandler(event: KeyboardEvent) {
+    if (event.key === "Tab" && document.activeElement && document.activeElement.getAttribute("quirk-index")) {
+      let moveElementIndex = +document.activeElement.getAttribute("quirk-index");
+      // here added 1 to make sure next element to focus is in view
+      this.moveQuirk(undefined, moveElementIndex + 1);
+    }
+  }
   scrollEventCallback(_e: Event) {
     if (this.scrollTimeoutId != null) {
       clearTimeout(this.scrollTimeoutId);
@@ -147,13 +163,13 @@ export class QuirkBoomerang {
   render() {
     return (
       <div class="quirk-boomerang-container">
-        <div class="move-btns">
+        <div class="move-btns" tabIndex={-1}>
           <slot name="left-button">
             <div class="move-btn-wrapper backward-move-btn-wrapper">
               <button
                 class="move-btn backward-move backward-move-btn"
                 disabled={!this.visibleMoveButton.backward}
-              onClick={this.moveQuirk.bind(this, false)}
+                  onClick={this.moveQuirk.bind(this, false, undefined)}
             >
               &lt;
             </button>
@@ -164,14 +180,14 @@ export class QuirkBoomerang {
               <button
                 class="move-btn forward-move forward-move-btn"
                 disabled={!this.visibleMoveButton.forward}
-              onClick={this.moveQuirk.bind(this, true)}
+                  onClick={this.moveQuirk.bind(this, true, undefined)}
             >
               &gt;
             </button>
             </div>
           </slot>
         </div>
-        <div class="quirk-container" style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
+        <div class="quirk-container" onKeyUp={this.keyPressHandler.bind(this)} style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
           <slot></slot>
         </div>
       </div>

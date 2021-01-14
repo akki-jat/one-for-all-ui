@@ -21,7 +21,7 @@ export namespace Components {
         "displayCount": | { small: string, medium: string, large: string }
     | string | number;
         "moveCount": number;
-        "moveQuirk": (isMoveForward: boolean) => Promise<void>;
+        "moveQuirk": (isMoveForward: boolean | undefined, moveElementIndex?: number | undefined) => Promise<void>;
         "totalElements": number;
     }
     interface SpecialCard {
