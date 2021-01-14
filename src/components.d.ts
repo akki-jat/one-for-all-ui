@@ -20,6 +20,7 @@ export namespace Components {
     interface QuirkBoomerang {
         "displayCount": | { small: string, medium: string, large: string }
     | string | number;
+        "moveButtonInaccessibleBehaviour": "disable" | "hide";
         "moveCount": number;
         "moveQuirk": (isMoveForward: boolean | undefined, moveElementIndex?: number | undefined) => Promise<void>;
         "totalElements": number;
@@ -103,6 +104,7 @@ declare namespace LocalJSX {
     interface QuirkBoomerang {
         "displayCount"?: | { small: string, medium: string, large: string }
     | string | number;
+        "moveButtonInaccessibleBehaviour"?: "disable" | "hide";
         "moveCount"?: number;
         "totalElements"?: number;
     }

@@ -12,6 +12,7 @@ export class QuirkBoomerang {
   @Prop() displayCount:
     | { small: string, medium: string, large: string }
     | string | number = { small: "1", medium: "2", large: "4" };
+  @Prop() moveButtonInaccessibleBehaviour: "disable" | "hide" = "disable";
 
   @State() lastMovedElement: Element;
   @State() moveDirection: "forward" | "backward";
@@ -138,6 +139,7 @@ export class QuirkBoomerang {
       this.moveQuirk(undefined, moveElementIndex + 1);
     }
   }
+
   scrollEventCallback(_e: Event) {
     if (this.scrollTimeoutId != null) {
       clearTimeout(this.scrollTimeoutId);
@@ -164,28 +166,34 @@ export class QuirkBoomerang {
     return (
       <div class="quirk-boomerang-container">
         <div class="move-btns" tabIndex={-1}>
-          <slot name="left-button">
-            <div class="move-btn-wrapper backward-move-btn-wrapper">
-              <button
-                class="move-btn backward-move backward-move-btn"
-                disabled={!this.visibleMoveButton.backward}
+          {this.moveButtonInaccessibleBehaviour === "disable" || this.visibleMoveButton.backward ?
+            <slot name="left-button">
+              <div class="move-btn-wrapper backward-move-btn-wrapper">
+                <button
+                  class="move-btn backward-move backward-move-btn"
+                  disabled={!this.visibleMoveButton.backward}
                   onClick={this.moveQuirk.bind(this, false, undefined)}
-            >
-              &lt;
+                >
+                  &lt;
             </button>
-            </div>
-          </slot>
-          <slot name="right-button">
-            <div class="move-btn-wrapper forward-move-btn-wrapper">
-              <button
-                class="move-btn forward-move forward-move-btn"
-                disabled={!this.visibleMoveButton.forward}
+              </div>
+            </slot>
+            : null
+          }
+          {this.moveButtonInaccessibleBehaviour === "disable" || this.visibleMoveButton.forward ?
+            <slot name="right-button">
+              <div class="move-btn-wrapper forward-move-btn-wrapper">
+                <button
+                  class="move-btn forward-move forward-move-btn"
+                  disabled={!this.visibleMoveButton.forward}
                   onClick={this.moveQuirk.bind(this, true, undefined)}
-            >
-              &gt;
+                >
+                  &gt;
             </button>
-            </div>
-          </slot>
+              </div>
+            </slot>
+            : null
+          }
         </div>
         <div class="quirk-container" onKeyUp={this.keyPressHandler.bind(this)} style={{ "--quirk-small-count": this.quirkCount.small, "--quirk-medium-count": this.quirkCount.medium, "--quirk-large-count": this.quirkCount.large }}>
           <slot></slot>
