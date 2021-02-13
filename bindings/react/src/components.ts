@@ -9,5 +9,6 @@ import { applyPolyfills, defineCustomElements } from '@one-for-all-ui/core/loade
 
 applyPolyfills().then(() => defineCustomElements());
 export const DarkShadow = /*@__PURE__*/createReactComponent<JSX.DarkShadow, HTMLDarkShadowElement>('dark-shadow');
+export const QuirkBoomerang = /*@__PURE__*/createReactComponent<JSX.QuirkBoomerang, HTMLQuirkBoomerangElement>('quirk-boomerang');
 export const SpecialCard = /*@__PURE__*/createReactComponent<JSX.SpecialCard, HTMLSpecialCardElement>('special-card');
 export const ZeroGravityButton = /*@__PURE__*/createReactComponent<JSX.ZeroGravityButton, HTMLZeroGravityButtonElement>('zero-gravity-button');

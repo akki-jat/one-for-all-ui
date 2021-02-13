@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
-    />
-    <title>Stencil Component Starter</title>
 
-    <script type="module" src="/build/one-for-all-ui.esm.js"></script>
-    <script nomodule src="/build/one-for-all-ui.js"></script>
-    <link rel="stylesheet" href="/build/one-for-all-ui.css">
-    <style>
-      /* :root {
-          --color-primary: #1d1e21;
-          --color-secondary: #F95454;
-          --color-font: #ffffff;
-      }
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <title>Stencil Component Starter</title>
 
-      body {
+  <script type="module" src="/build/one-for-all-ui.esm.js"></script>
+  <script nomodule src="/build/one-for-all-ui.js"></script>
+  <link rel="stylesheet" href="/build/one-for-all-ui.css">
+  <style>
+    /* :root {
+      --color-primary: #1d1e21;
+      --color-secondary: #F95454;
+      --color-font: #ffffff;
+    } */
+
+    /* body {
           background-color: var(--color-primary);
       } */
-    </style>
-  </head>
-  <body>
-    <div>
-      <!-- <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
+  </style>
+</head>
+
+<body>
+  <div>
+    <!-- <button type="button" onclick="showDarkShadow()">Show Dark Shadow</button>
       <dark-shadow
         shadow-title="Test"
         close-on-outside-click="true"
@@ -43,7 +42,7 @@
         <div slot="footer-content"><button>Test</button></div>
       </dark-shadow> -->
 
-      <!-- <special-card
+    <!-- <special-card
         id="card"
         width="275px"
         card-title="This is Title"
@@ -63,22 +62,94 @@
         </div>
       </special-card> -->
 
-      <div style="margin:100px; height: 300px; width: 500px; position: relative; background-color: yellow;">
+    <!-- <div style="margin:100px; height: 300px; width: 500px; position: relative; background-color: yellow;">
         <zero-gravity-button size="large" hover-elevation="6" variant="round" position="custom" overlap>+</zero-gravity-button>
-      </div>
+      </div> -->
+
+    <div>
+      <quirk-boomerang move-count="1" display-count="3" move-button-inaccessible-behaviour="hide">
+        <div quirk-index="0">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+        </div>
+        <div quirk-index="1">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+        </div>
+        <div quirk-index="2">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+        </div>
+        <div quirk-index="3">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+        </div>
+        <div quirk-index="4">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Shaqi_jrvej.jpg/1200px-Shaqi_jrvej.jpg">
+        </div>
+      </quirk-boomerang>
+      <!-- <quirk-boomerang move-count="1" display-count="2" move-button-inaccessible-behaviour="hide">
+        <special-card tabindex="1" id="card" card-title="This is Title" border-radius="14px" elevation="2"
+          hover-elevation="6" quirk-index="0">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </special-card>
+        <special-card tabindex="2" id="card" card-title="This is Title" border-radius="14px" elevation="2"
+          hover-elevation="6" quirk-index="1">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </special-card>
+        <special-card tabindex="3" id="card" card-title="This is Title" border-radius="14px" elevation="2"
+          hover-elevation="6" quirk-index="2">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </special-card>
+        <special-card tabindex="4" id="card" card-title="This is Title" border-radius="14px" elevation="2"
+          hover-elevation="6" quirk-index="3">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </special-card>
+        <special-card tabindex="5" id="card-test" card-title="This is Title" border-radius="14px" elevation="2"
+          hover-elevation="6" quirk-index="4">
+          THIS Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+          velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
+          est laborum.
+        </special-card>
+      </quirk-boomerang> -->
     </div>
+  </div>
 
-    <script>
-      // const darkShadowEl = document.querySelector("dark-shadow");
-      // darkShadowEl.addEventListener("beforeHideCallback", test);
+  <script>
+    // const darkShadowEl = document.querySelector("dark-shadow");
+    // darkShadowEl.addEventListener("beforeHideCallback", test);
 
-      function showDarkShadow() {
-        const darkShadowEl = document.querySelector("dark-shadow");
-        darkShadowEl.visible = true;
-        // if (darkShadowEl) {
-        //   darkShadowEl.open();
-        // }
-      }
+    function showDarkShadow() {
+      const darkShadowEl = document.querySelector("dark-shadow");
+      darkShadowEl.visible = true;
+      // if (darkShadowEl) {
+      //   darkShadowEl.open();
+      // }
+    }
 
       // const zeroGravityBtn = document.querySelector('zero-gravity-button');
       // zeroGravityBtn.addEventListener('dblclick', (e) => { console.log('i am clicked', e) })
@@ -87,6 +158,7 @@
       //   console.log("hi");
       //   // ev.preventDefault();
       // }
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
