@@ -50,6 +50,10 @@ Note: Replace your_color with your choice of color.
 
 - Note: If you want to show button respective to any element then set position to relative for that element.
 
+#### Quirk Boomerang (Carousel)
+- JavaScript \- [Example Link](https://codesandbox.io/s/javascript-one-for-all-ui-quirkboomerang-carousel-u8edv)
+- React \- [Example Link](https://codesandbox.io/s/react-one-for-all-ui-quirkboomerang-carousel-7ypq3)
+
 <br />
 
 ## For Development
