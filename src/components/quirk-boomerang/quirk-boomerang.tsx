@@ -60,6 +60,8 @@ export class QuirkBoomerang {
     if (moveElementIndex) {
       this.moveDirection = moveElementIndex >= this.lastMovedElementIndex ? "forward" : "backward";
       isMoveForward = this.moveDirection === "forward";
+    } else {
+      this.moveDirection = isMoveForward ? "forward" : "backward";
     }
 
     // if (this.visibleQuirks && this.visibleQuirks.length && (!moveElementIndex || (moveElementIndex && moveElementIndex !== this.lastMovedElementIndex))) {
