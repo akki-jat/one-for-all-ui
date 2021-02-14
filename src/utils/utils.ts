@@ -2,9 +2,10 @@ export const stopClickPropagation = (ev: MouseEvent) => {
   ev.stopPropagation();
 };
 
-export const isElementVisibleInViewportAndParent = (el: Element) => {
+export const isElementVisibleInViewportAndParent = (el: Element, elParentEl?: HTMLElement) => {
+  const parentIgnoreMargin = 10;
   const rect = el.getBoundingClientRect();
-  const parentRect = el.parentElement.getBoundingClientRect();
+  const parentRect = elParentEl.getBoundingClientRect();
 
   return (
     // checks if element is visible in viewport
@@ -14,8 +15,8 @@ export const isElementVisibleInViewportAndParent = (el: Element) => {
     rect.right <= (window.innerWidth || document.documentElement.clientWidth) &&
     // checks if element is visible in parent element
     rect.top >= parentRect.top &&
-    rect.left >= parentRect.left &&
-    rect.bottom <= parentRect.bottom &&
-    rect.right <= parentRect.right
+    rect.left >= parentRect.left - parentIgnoreMargin &&
+    rect.bottom <= parentRect.bottom + parentIgnoreMargin &&
+    rect.right <= parentRect.right + parentIgnoreMargin
   );
 }

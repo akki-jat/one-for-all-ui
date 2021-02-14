@@ -100,7 +100,7 @@ export class QuirkBoomerang {
     while (true) {
       const el = this.quirkContainerEl.querySelector(`[quirk-index="${index}"]`);
 
-      if (el && isElementVisibleInViewportAndParent(el)) {
+      if (el && isElementVisibleInViewportAndParent(el, this.quirkEl.parentElement)) {
         el.classList.add("quirk-visible");
       } else {
         visibleQuirkClassSetFailCount++;
@@ -117,11 +117,7 @@ export class QuirkBoomerang {
       }
     }
 
-    this.setMoveButtonVisibility(
-      isMoveForward ? firstVisibleQuirkIndex : firstVisibleQuirkIndex - this.moveCount,
-      isMoveForward ? lastVisibleQuirkIndex + this.moveCount : lastVisibleQuirkIndex,
-      isFirstRender
-    );
+    this.setMoveButtonVisibility(firstVisibleQuirkIndex, lastVisibleQuirkIndex, isFirstRender);
   }
 
   setMoveButtonVisibility(firstVisibleQuirkIndex: number, lastVisibleQuirkIndex: number, isFirstRender: boolean) {
