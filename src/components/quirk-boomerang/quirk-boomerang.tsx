@@ -77,7 +77,7 @@ export class QuirkBoomerang {
 
       if (moveEl) {
         this.lastMovedElement = moveEl;
-        moveEl.scrollIntoView({ behavior: "smooth", block: "center", inline: "end" });
+        moveEl.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "end" });
       }
     }
   }
