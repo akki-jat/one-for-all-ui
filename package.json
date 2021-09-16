@@ -34,7 +34,7 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@stencil/core": "2.8.0",
+    "@stencil/core": "2.8.1",
     "@stencil/react-output-target": "0.0.12",
     "@types/jest": "27.0.1",
     "@types/puppeteer": "5.4.4",
