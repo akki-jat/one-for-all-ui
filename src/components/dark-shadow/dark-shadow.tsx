@@ -132,39 +132,41 @@ export class DarkShadow {
           class={{ "dark-shadow": true, "dark-shadow--visible": this.extend }}
           style={{ width: this.width }}
         >
-          <slot name="header">
-            <div
-              class={{
-                "dark-shadow-header": true,
-                "dark-shadow-header--has-title":
-                  this.showCloseIcon || this.shadowTitle?.length > 0,
-              }}
-            >
-              {this.showCloseIcon ? (
-                <slot name="header-close-icon">
-                  <i
-                    class="dark-shadow-header__close-icon"
-                    onClick={this.close.bind(this)}
-                  >
-                    <svg class="dark-shadow-header__clear-svg" viewBox="0 0 24 24">
-                      <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
-                    </svg>
-                  </i>
-                </slot>
-              ) : null}
-              <h2 class="dark-shadow-header__title">{this.shadowTitle}</h2>
-            </div>
-          </slot>
-          <slot name="body">
-            <div class="dark-shadow-body">
-              <slot></slot>
-            </div>
-          </slot>
-          <slot name="footer">
-            <div class="dark-shadow-footer">
-              <slot name="footer-content"></slot>
-            </div>
-          </slot>
+          <div class="dark-shadow-content">
+            <slot name="header">
+              <div
+                class={{
+                  "dark-shadow-header": true,
+                  "dark-shadow-header--has-title":
+                    this.showCloseIcon || this.shadowTitle?.length > 0,
+                }}
+              >
+                {this.showCloseIcon ? (
+                  <slot name="header-close-icon">
+                    <i
+                      class="dark-shadow-header__close-icon"
+                      onClick={this.close.bind(this)}
+                    >
+                      <svg class="dark-shadow-header__clear-svg" viewBox="0 0 24 24">
+                        <path d="M18.984 6.422l-5.578 5.578 5.578 5.578-1.406 1.406-5.578-5.578-5.578 5.578-1.406-1.406 5.578-5.578-5.578-5.578 1.406-1.406 5.578 5.578 5.578-5.578z"></path>
+                      </svg>
+                    </i>
+                  </slot>
+                ) : null}
+                <h2 class="dark-shadow-header__title">{this.shadowTitle}</h2>
+              </div>
+            </slot>
+            <slot name="body">
+              <div class="dark-shadow-body">
+                <slot></slot>
+              </div>
+            </slot>
+            <slot name="footer">
+              <div class="dark-shadow-footer">
+                <slot name="footer-content"></slot>
+              </div>
+            </slot>
+          </div>
         </div>
       </div>
     );

@@ -5,11 +5,10 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  margin: auto;
   display: flex;
   z-index: 9999;
-  padding-top: 4%;
   position: fixed;
+  align-items: center;
   justify-content: center;
 }
 
@@ -24,13 +23,13 @@
 .dark-shadow {
   display: none;
   padding: 0.8rem;
-  max-height: 90vh;
+  max-height: 90%;
   color: var(--color-font);
   background-color: var(--color-primary, white);
 }
 
 .dark-shadow--visible {
-  display: block;
+  display: flex;
 }
 
 .dark-shadow-header--has-title {
