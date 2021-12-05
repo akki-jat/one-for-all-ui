@@ -1,6 +1,6 @@
 {
   "name": "@one-for-all-ui/react",
-  "version": "0.0.5-beta.3",
+  "version": "0.0.5-beta.4",
   "description": "React Design Library",
   "author": {
     "name": "Akshay Jat (akki-jat)",
@@ -29,7 +29,7 @@
     "prepublishOnly": "run-s build"
   },
   "dependencies": {
-    "@one-for-all-ui/core": "0.0.5-beta.3"
+    "@one-for-all-ui/core": "0.0.5-beta.4"
   },
   "peerDependencies": {
     "react": "^16.0.0"
