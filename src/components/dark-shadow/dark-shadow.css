@@ -32,6 +32,10 @@
   display: flex;
 }
 
+.dark-shadow-content {
+  width: 100%;
+}
+
 .dark-shadow-header--has-title {
   padding-bottom: 0.5rem;
 }
