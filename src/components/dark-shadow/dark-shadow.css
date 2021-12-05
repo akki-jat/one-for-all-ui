@@ -5,10 +5,11 @@
   bottom: 0;
   width: 100%;
   height: 100%;
+  margin: auto;
   display: flex;
   z-index: 9999;
+  padding-top: 4%;
   position: fixed;
-  align-items: center;
   justify-content: center;
 }
 
@@ -23,6 +24,7 @@
 .dark-shadow {
   display: none;
   padding: 0.8rem;
+  max-height: 90vh;
   color: var(--color-font);
   background-color: var(--color-primary, white);
 }
@@ -53,6 +55,8 @@
 }
 
 .dark-shadow-body {
+  overflow: auto;
+  max-height: 82%;
   margin-top: 1rem;
 }
 
