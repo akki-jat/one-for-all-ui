@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@stencil/core": "2.14.0",
-    "@stencil/react-output-target": "0.2.1",
+    "@stencil/react-output-target": "0.3.1",
     "@types/jest": "27.0.3",
     "@types/puppeteer": "5.4.4",
     "dotenv": "^16.0.0",
